@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hu" ng-app="SMDB" ng-controller="MainController" class="dark">
+
+<head>
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMDB</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/MainController.js"></script>
+  
+</head>
+
+
+    <body class="bg-gray-900 text-gray-100">
+
+        <header class="bg-gray-800 shadow p-4 mb-6">
+            <h1 class="text-3xl font-bold text-center text-[#fbbf21]">Series & Movies Database</h1>
+        </header>
+
+        <main class="container mx-auto px-4">
+            <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col justify-between" ng-repeat="x in entries">
+                    <div>
+                        <img src="{{ x.img }}" alt="{{ x.title }}" class="w-full rounded-t-2xl mb-4">
+                        <h2 class="text-xl font-bold text-amber-400 mb-2">{{ x.title }}</h2>
+                        <p class="text-gray-300 mb-2">{{ x.descr }}</p>
+                    </div>
+                    <div>
+                        <span class="text-l font-semibold text-amber-400 mb-1">Actors:</span>
+                        <h3 class="text-l font-semibold text-gray-300 mb-1">{{ x.actor }}</h3>
+                        <p class="text-gray-500">{{ x.release_date }}</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="assets/js/script.js"></script>
+
+    </body>
+
+</html>
