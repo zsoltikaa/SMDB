@@ -165,7 +165,7 @@
           <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <div 
               class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-amber-500/20"
-              ng-repeat="x in entries | filter:{title: searchTitle} | orderBy: sortBy"
+              ng-repeat="x in entries | filter:startsWithFilter | orderBy: sortBy"
             >
               <div class="relative">
                 <img src="{{ x.img }}" alt="{{ x.title }}" class="w-full h-64 object-cover">
