@@ -1,18 +1,14 @@
 # SMDB (Series & Movies Database)
 
-SMDB is a comprehensive web-based application that allows users to explore, search, and manage a collection of movies and series. This project leverages **AngularJS**, **PHP**, and **MySQL** to dynamically load and display movie entries from a database. The application allows users to easily search for their favorite movies, view detailed information, and link to external streaming platforms.
+<img src="https://skillicons.dev/icons?i=html,js,css,php,tailwind,mysql" />
 
-<p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=html,js,css,php,tailwind,mysql" />
-  </a>
-</p>
+SMDB is a comprehensive web-based application that allows users to explore, search, and manage a collection of movies and series. This project leverages **AngularJS**, **PHP**, and **MySQL** to dynamically load and display movie entries from a database. The application allows users to easily search for their favorite movies, view detailed information, and link to external streaming platforms.
 
 ## Features
 
 - **Search by Title**: Users can search for movies and series by their title, using a search bar located on the homepage.
 - **Sort Entries**: Movies and series can be sorted by different attributes, including title, release date, or director, making it easy to find content based on preferences.
-- **Movie Details**: When a user clicks on a movie, detailed information about the movie is displayed. This includes:
+- **Movie Details**: When a user hovers on a movie, detailed information about the movie is displayed. This includes:
   - Title
   - Director
   - Release Date
