@@ -1,47 +1,60 @@
-# SMDB (Series & Movies Database)
+# **SMDB** — *Series & Movies Database*
 
-<img src="https://skillicons.dev/icons?i=html,js,css,php,tailwind,mysql" />
+![Tech Stack](https://skillicons.dev/icons?i=html,js,css,php,tailwind,mysql)
 
-SMDB is a comprehensive web-based application that allows users to explore, search, and manage a collection of movies and series. This project leverages **AngularJS**, **PHP**, and **MySQL** to dynamically load and display movie entries from a database. The application allows users to easily search for their favorite movies, view detailed information, and link to external streaming platforms.
+**SMDB** is a sleek and comprehensive web-based application designed for discovering, searching, and managing a dynamic collection of movies and series. Built with **AngularJS**, **PHP**, and **MySQL**, it offers real-time data fetching, detailed metadata views, and seamless integration with external streaming platforms.
 
-## Features
+---
 
-- **Search by Title**: Users can search for movies and series by their title, using a search bar located on the homepage.
-- **Sort Entries**: Movies and series can be sorted by different attributes, including title, release date, or director, making it easy to find content based on preferences.
-- **Movie Details**: When a user hovers on a movie, detailed information about the movie is displayed. This includes:
+## ✨ **Features**
+
+- **🔍 Search by Title**  
+  Instantly find your favorite movies or series using the homepage search bar.
+  
+- **↕️ Sort Entries**  
+  Sort your collection by title, release date, or director to discover content tailored to your preferences.
+  
+- **ℹ️ Detailed Hover Info**  
+  Hover over a movie or series to view key details like:
   - Title
   - Director
   - Release Date
   - Description
   - Cast (Actors)
-  - IMDB Rating
-  - Link to streaming platforms (e.g., Netflix, Amazon Prime)
-- **Watch Now**: A "Watch Now" button that links directly to streaming services where the movie can be watched.
-- **Responsive Design**: The application is fully responsive, ensuring it works seamlessly on both desktop and mobile devices.
-- **Dynamic Content**: The content is dynamically fetched from the MySQL database and updated in real-time.
-
-## Tech Stack
-
-- **Frontend**:
-  - **AngularJS** (1.8.2): Used for building the dynamic single-page application (SPA). It handles data binding, controller management, and UI updates.
-  - **Tailwind CSS**: A utility-first CSS framework that allows for fast and efficient styling.
-  - **Font Awesome**: Icons for better visual appeal and user interface design.
-  - **HTML5** & **CSS3**: For structuring and styling the webpage.
+  - IMDb Rating
+  - Link to Streaming Platforms (e.g., Netflix, Amazon Prime)
   
-- **Backend**:
-  - **PHP**: PHP handles backend requests, such as querying the MySQL database for movie entries and handling user interactions with the database.
-  - **MySQL**: The relational database management system used to store movie data (e.g., title, description, release date, actors, ratings, etc.).
+- **▶️ Watch Now**  
+  A "Watch Now" button that links directly to streaming platforms, making it easy to watch your chosen movie.
   
-- **Database**:
-  - **MySQL Database**: Stores information about movies and series. Each movie/series entry includes data such as the title, description, release date, actors, director, IMDB rating, and a link to the streaming platform.
-  
-## Installation
+- **📱 Fully Responsive**  
+  The app adapts seamlessly to both desktop and mobile devices, ensuring the best experience across all screen sizes.
 
-Follow these steps to set up the SMDB project locally on your machine.
+- **⚡ Dynamic Content**  
+  Data is fetched in real-time from a MySQL database, providing up-to-date information at all times.
+
+---
+
+## 🛠️ **Tech Stack**
+
+### **Frontend**
+- **AngularJS** (v1.8.2) – Powerful framework for building dynamic single-page applications (SPA), handling data binding, controllers, and UI updates.
+- **Tailwind CSS** – A utility-first CSS framework for efficient and modern styling.
+- **Font Awesome** – Beautiful icons to enhance the user interface.
+- **HTML5 & CSS3** – For semantic structure and responsive layout.
+
+### **Backend**
+- **PHP** – Server-side language used to manage backend processes like querying the MySQL database and handling user interactions.
+- **MySQL** – Relational database management system that stores all movie and series data (e.g., title, description, actors, ratings, etc.).
+
+---
+
+## 📦 **Installation**
+
+To get started with **SMDB** on your local machine, follow these steps:
 
 ### 1. Clone the Repository
-
-Clone the repository to your local machine to get started:
+Clone the repo to your local machine:
 
 ```bash
 git clone https://github.com/yourusername/smdb.git
