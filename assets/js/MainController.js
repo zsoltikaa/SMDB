@@ -12,4 +12,15 @@ app.controller('MainController', function($scope, $http) {
 
         $scope.sortBy = "";
 
+        $scope.startsWithFilter = function(item) {
+            if (!$scope.searchTitle || $scope.searchTitle.trim() === '') {
+                return true;
+            }
+        
+            const title = (item.title || '').toLowerCase();
+            const search = $scope.searchTitle.toLowerCase();
+        
+            return title.indexOf(search) === 0;
+        };
+
 });
