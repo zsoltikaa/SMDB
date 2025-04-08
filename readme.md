@@ -1,6 +1,6 @@
 # **SMDB** — *Series & Movies Database*
 
-![Tech Stack](https://skillicons.dev/icons?i=html,js,css,php,tailwind,mysql)
+![Tech Stack](https://skillicons.dev/icons?i=html,js,css,php,tailwind,mysql,angular)
 
 **SMDB** is a sleek and comprehensive web-based application designed for discovering, searching, and managing a dynamic collection of movies and series. Built with **AngularJS**, **PHP**, and **MySQL**, it offers real-time data fetching, detailed metadata views, and seamless integration with external streaming platforms.
 
