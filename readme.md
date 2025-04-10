@@ -12,7 +12,7 @@
   Instantly find your favorite movies or series using the homepage search bar.
   
 - **↕️ Sort Entries**  
-  Sort your collection by title, release date, or director to discover content tailored to your preferences.
+  Sort your collection by title, release date, IMDb rating or director to discover content tailored to your preferences.
   
 - **ℹ️ Detailed Hover Info**  
   Hover over a movie or series to view key details like:
