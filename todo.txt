@@ -1,2 +1,1 @@
-- rendezes rating alapjan (novekvo, csokkeno)
 - aside bovitese
