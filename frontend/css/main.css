@@ -1,63 +1,29 @@
+/* import custom google font */
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
+/* disable text selection and touch callout across all browsers */
 * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none; 
+    -webkit-touch-callout: none; /* safari */
+    -webkit-user-select: none;   /* chrome/safari/opera */
+    -khtml-user-select: none;    /* konqueror */
+    -moz-user-select: none;      /* firefox */
+    -ms-user-select: none;       /* internet explorer/edge */
+    user-select: none;           /* standard */
 }
 
+/* smooth scroll behavior for anchor links */
 html {
     scroll-behavior: smooth;
 }
 
+/* default body layout setup: vertical column, full height */
 body {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-.bg-gray-900 {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.bg-gray-900 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-aside, header, footer, #cards .bg-gray-900 {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), 
-                linear-gradient(90deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.5));
-}
-
-main {
-    background: linear-gradient(120deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)), 
-                linear-gradient(240deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.7));
-}
-
-header {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), 
-                linear-gradient(45deg, rgba(188, 94, 0, 0.5), rgba(0, 0, 0, 0.5));
-}
-
-footer {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), 
-                linear-gradient(90deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.5));
-}
-
-.top-genres {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background-color: #1f1f1f;
-}
-
+/* apply custom font and spacing to h1 elements */
 h1 {
     font-family: "Share Tech Mono", monospace;
     font-weight: 400;
@@ -65,10 +31,58 @@ h1 {
     letter-spacing: 1.5px;
 }
 
+/* make buttons show pointer cursor on hover */
 button:hover {
     cursor: pointer;
 }
 
+/* allow flex item to grow and fill available space */
 .flex-grow {
     flex-grow: 1;
+}
+
+/* sticky top genres section with high z-index */
+.top-genres {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #1f1f1f;
+}
+
+/* layout for bg-gray-900 container: vertical column, full height */
+.bg-gray-900 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* make images inside .bg-gray-900 containers scale and cover the area */
+.bg-gray-900 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* gradient background for aside, header, footer and each .bg-gray-900 inside #cards */
+aside, header, footer, #cards .bg-gray-900 {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), 
+                linear-gradient(90deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+/* gradient background for header with diagonal orange accent */
+header {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), 
+                linear-gradient(45deg, rgba(188, 94, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+/* gradient background for footer matching the aside styling */
+footer {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), 
+                linear-gradient(90deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+/* main content background with diagonal dark-to-orange gradients */
+main {
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)), 
+                linear-gradient(240deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.7));
 }
