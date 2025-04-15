@@ -1,20 +1,27 @@
+-- create the database 'SMDB' if it doesn't already exist
+-- set character encoding to utf8mb4 and collation to hungarian-specific collation
 CREATE DATABASE IF NOT EXISTS SMDB CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci;
+
+-- select the 'SMDB' database to use
 USE SMDB;
 
+-- create the 'entries' table if it doesn't exist
+-- stores information about movies and series
 CREATE TABLE IF NOT EXISTS entries (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  img VARCHAR(255) not null,
-  title VARCHAR(255) NOT NULL,
-  director VARCHAR(255) NOT NULL,
-  descr VARCHAR(255) NOT NULL,
-  actor VARCHAR(255) NOT NULL,
-  release_date VARCHAR(255) NOT NULL,
-  imdb_rating VARCHAR(255) NOT NULL,
-  stream_link VARCHAR(255) NOT NULL,
-  medium ENUM('movie', 'series') NOT NULL,
-  genre VARCHAR(255) NOT NULL
+  id INT AUTO_INCREMENT PRIMARY KEY,                  -- unique identifier for each entry
+  img VARCHAR(255) NOT NULL,                          -- url of the poster image
+  title VARCHAR(255) NOT NULL,                        -- title of the movie or series
+  director VARCHAR(255) NOT NULL,                     -- director's name
+  descr VARCHAR(255) NOT NULL,                        -- short description or plot
+  actor VARCHAR(255) NOT NULL,                        -- main actors
+  release_date VARCHAR(255) NOT NULL,                 -- release date (stored as string)
+  imdb_rating VARCHAR(255) NOT NULL,                  -- imdb rating (stored as string)
+  stream_link VARCHAR(255) NOT NULL,                  -- streaming platform url
+  medium ENUM('movie', 'series') NOT NULL,            -- type: either movie or series
+  genre VARCHAR(255) NOT NULL                         -- genre of the entry
 );
 
+-- add movies and series to the 'entries' table
 INSERT INTO `entries` (`id`, `img`, `title`, `director`, `descr`, `actor`, `release_date`, `imdb_rating`, `stream_link`, `medium`, `genre`) VALUES
 (1, 'https://m.media-amazon.com/images/M/MV5BN2NhMDk2MmEtZDQzOC00MmY5LThhYzAtMDdjZGFjOGZjMjdjXkEyXkFqcGc@._V1_SX300.jpg', 'Alien', 'Ridley Scott', 'A space crew encounters a deadly extraterrestrial being on their ship, and must find a way to survive its attack.', 'Sigourney Weaver, Tom Skerritt', '1979-05-25', '8.5', 'https://www.disneyplus.com/en-hu/browse/entity-27389b6b-bf27-45a6-afdf-cef0fe723cff', 'movie', 'sci-fi'),
 (2, 'https://m.media-amazon.com/images/M/MV5BZjIyNGJhYzYtN2I1My00OTVhLWEyMzItZTVjNDMzOTVkYWViXkEyXkFqcGc@._V1_SX300.jpg', 'Aliens', 'James Cameron', 'The survivors of the first Alien encounter return to the planet where it all began to face a new, more deadly alien species.', 'Sigourney Weaver, Michael Biehn', '1986-07-18', '8.4', 'https://www.disneyplus.com/en-hu/browse/entity-b2ae8903-e3c5-4ae1-a9f7-885c04985f96', 'movie', 'sci-fi'),
