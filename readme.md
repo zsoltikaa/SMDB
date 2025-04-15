@@ -2,7 +2,7 @@
 
 ![Tech Stack](https://skillicons.dev/icons?i=html,js,css,php,tailwind,mysql,angular)
 
-(https://img.shields.io/github/last-commit/zsoltikaa/SMDB)
+![GitHub last commit](https://img.shields.io/github/last-commit/zsoltikaa/SMDB)
 (https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 **SMDB** is a sleek and comprehensive web-based application designed for discovering, searching, and managing a dynamic collection of movies and series. Built with **AngularJS**, **PHP**, and **MySQL**, it offers real-time data fetching, detailed metadata views, and seamless integration with external streaming platforms.
