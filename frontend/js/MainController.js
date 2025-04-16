@@ -1,7 +1,7 @@
 app.controller('MainController', function($scope, $http) {
 
     // fetch data from the backend api using http get request
-    $http.get("http://localhost/SMDB/backend/api/smdb.php").then(function(response) 
+    $http.get("http://localhost/Padar_Zsolt/SMDB/backend/api/smdb.php").then(function(response) 
     {
         // if the request is successful, store the returned data in the 'entries' array
         $scope.entries = response.data;
