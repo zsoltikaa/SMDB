@@ -50,87 +50,29 @@
       <div class="p-4">
 
         <!-- top genres section -->
-        <div class="hidden md:block mb-8">
+        <div class="hidden md:block mb-8" ng-if="genreStats.length">
           <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-4">Top genres</h3>
           <div class="space-y-3">
-
-            <!-- sci-fi genre progress bar -->
-            <div class="relative pt-1">
+        
+            <div class="relative pt-1" ng-repeat="genre in genreStats | limitTo:5">
               <div class="flex mb-2 items-center justify-between">
                 <div>
-                  <span class="text-xs font-semibold inline-block text-amber-400">Sci-Fi</span>
+                  <span class="text-xs font-semibold inline-block text-amber-400">{{ genre.name }}</span>
                 </div>
                 <div class="text-right">
-                  <span class="text-xs font-semibold inline-block text-amber-400">35%</span>
+                  <span class="text-xs font-semibold inline-block text-amber-400">{{ genre.percent }}%</span>
                 </div>
               </div>
               <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-800">
-                <div style="width: 35%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-amber-500 to-amber-300"></div>
+                <div 
+                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-amber-500 to-amber-300"
+                  ng-style="{ width: genre.percent + '%' }">
+                </div>
               </div>
             </div>
-
-            <!-- drama genre progress bar -->
-            <div class="relative pt-1">
-              <div class="flex mb-2 items-center justify-between">
-                <div>
-                  <span class="text-xs font-semibold inline-block text-amber-400">Drama</span>
-                </div>
-                <div class="text-right">
-                  <span class="text-xs font-semibold inline-block text-amber-400">25%</span>
-                </div>
-              </div>
-              <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-800">
-                <div style="width: 25%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-amber-500 to-amber-300"></div>
-              </div>
-            </div>
-
-            <!-- action/adventure genre progress bar -->
-            <div class="relative pt-1">
-              <div class="flex mb-2 items-center justify-between">
-                <div>
-                  <span class="text-xs font-semibold inline-block text-amber-400">Action/Adventure</span>
-                </div>
-                <div class="text-right">
-                  <span class="text-xs font-semibold inline-block text-amber-400">20%</span>
-                </div>
-              </div>
-              <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-800">
-                <div style="width: 20%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-amber-500 to-amber-300"></div>
-              </div>
-            </div>
-
-            <!-- thriller/horror genre progress bar -->
-            <div class="relative pt-1">
-              <div class="flex mb-2 items-center justify-between">
-                <div>
-                  <span class="text-xs font-semibold inline-block text-amber-400">Thriller/Horror</span>
-                </div>
-                <div class="text-right">
-                  <span class="text-xs font-semibold inline-block text-amber-400">15%</span>
-                </div>
-              </div>
-              <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-800">
-                <div style="width: 15%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-amber-500 to-amber-300"></div>
-              </div>
-            </div>
-
-            <!-- documentaries genre progress bar -->
-            <div class="relative pt-1">
-              <div class="flex mb-2 items-center justify-between">
-                <div>
-                  <span class="text-xs font-semibold inline-block text-amber-400">Documentaries</span>
-                </div>
-                <div class="text-right">
-                  <span class="text-xs font-semibold inline-block text-amber-400">5%</span>
-                </div>
-              </div>
-              <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-800">
-                <div style="width: 5%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-amber-500 to-amber-300"></div>
-              </div>
-            </div>
-
+        
           </div>
-        </div>
+        </div>        
 
         <!-- popular franchises section -->
         <div class="hidden md:block">
