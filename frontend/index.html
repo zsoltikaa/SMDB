@@ -25,6 +25,7 @@
   <!-- custom app logic -->
   <script src="js/app.js"></script>
   <script src="js/MainController.js"></script>
+  <script src="js/SortController.js"></script>
 
 </head>
 
@@ -174,6 +175,7 @@
         </div>
 
         <div class="mt-4 flex flex-col md:flex-row gap-4">
+
           <!-- search input -->
           <div class="relative flex-grow">
             <i class="fas fa-search absolute left-3 top-3 text-gray-500"></i>
@@ -186,21 +188,46 @@
           </div>
 
           <!-- sorting dropdown -->
-          <div class="relative md:w-48">
-            <i class="fas fa-sort absolute left-3 top-3 text-gray-500"></i>
-            <select 
-              ng-model="sortBy" 
-              class="w-full pl-10 pr-4 py-2 rounded-xl bg-gray-900 border border-gray-700 text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent appearance-none cursor-pointer"
-            >
-              <option value="">Sort</option>
-              <option value="title">By Title</option>
-              <option value="release_date">By Release Date</option>
-              <option value="director">By Director</option>
-              <option value="imdb_rating">By IMDb Rating</option>
-            </select>
-            <i class="fas fa-chevron-down absolute right-3 top-3 text-gray-500 pointer-events-none"></i>
+          <div class="custom-sort-dropdown" ng-controller="SortController">
+
+            <div class="sort-header" ng-click="toggleDropdown()" tabindex="0">
+              <i class="fas fa-sort"></i>
+              <span>{{ selectedOption.label || 'Sort' }}</span>
+              <i class="fas chevron" ng-class="{'fa-chevron-down': !showOptions, 'fa-chevron-up': showOptions}"></i>
+            </div>
+
+            <div class="sort-options" ng-class="{'show': showOptions}">
+              <div class="sort-option" ng-class="{'active': !selectedOption}" ng-click="selectOption(null)">
+                <i class="fas fa-check"></i>
+                <span>Sort</span>
+              </div>
+
+              <div class="sort-option" ng-class="{'active': selectedOption.value === 'title'}" ng-click="selectOption({value: 'title', label: 'By Title'})">
+                <i class="fas fa-check"></i>
+                <span>By Title</span>
+              </div>
+
+              <div class="sort-option" ng-class="{'active': selectedOption.value === 'release_date'}" ng-click="selectOption({value: 'release_date', label: 'By Release Date'})">
+                <i class="fas fa-check"></i>
+                <span>By Release Date</span>
+              </div>
+
+              <div class="sort-option" ng-class="{'active': selectedOption.value === 'director'}" ng-click="selectOption({value: 'director', label: 'By Director'})">
+                <i class="fas fa-check"></i>
+                <span>By Director</span>
+              </div>
+
+              <div class="sort-option" ng-class="{'active': selectedOption.value === 'imdb_rating'}" ng-click="selectOption({value: 'imdb_rating', label: 'By IMDb Rating'})">
+                <i class="fas fa-check"></i>
+                <span>By IMDb Rating</span>
+              </div>
+
+            </div>
+
           </div>
+
         </div>
+
       </header>
 
       <!-- main cards section -->
@@ -210,7 +237,7 @@
           <!-- single card item -->
           <div 
             class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-amber-500/20"
-            ng-repeat="x in entries | filter:startsWithFilter | orderBy: sortBy"
+            ng-repeat="x in entries | filter:startsWithFilter | orderBy: sortBy:sortOrder()"
           >
             <!-- movie image -->
             <div class="relative">

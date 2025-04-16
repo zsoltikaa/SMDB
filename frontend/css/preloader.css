@@ -1,293 +1,385 @@
 #preloader-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+  position: fixed; /* fix the position of the overlay */
+  top: 0; /* align it to the top */
+  left: 0; /* align it to the left */
+  width: 100%; /* full width */
+  height: 100%; /* full height */
+  background-color: #000; /* black background */
+  z-index: 9999; /* make sure it stays on top */
+  display: flex; /* use flexbox layout */
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically */
+  flex-direction: column; /* stack children vertically */
+}
 
-  .cinema-container {
-    position: relative;
-    width: 280px;
-    height: 180px;
-    overflow: hidden;
-    perspective: 1000px;
-  }
+.cinema-container {
+  position: relative; /* positioning relative to the parent */
+  width: 280px; /* width of the cinema screen container */
+  height: 180px; /* height of the cinema screen container */
+  overflow: hidden; /* hide content that overflows the container */
+  perspective: 1000px; /* give a 3D perspective */
+}
 
-  .screen {
-    width: 100%;
-    height: 140px;
-    background: linear-gradient(180deg, #111827, #1e293b);
-    border: 2px solid #f59e0b;
-    border-radius: 5px;
-    transform: rotateX(15deg);
-    box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
-    overflow: hidden;
-    position: relative;
-  }
+.screen {
+  width: 100%; /* full width of the container */
+  height: 140px; /* height of the screen */
+  background: linear-gradient(
+    180deg,
+    #111827,
+    #1e293b
+  ); /* gradient background */
+  border: 2px solid #f59e0b; /* yellow border */
+  border-radius: 5px; /* rounded corners */
+  transform: rotateX(15deg); /* rotate to simulate screen tilt */
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.5); /* yellow shadow effect */
+  overflow: hidden; /* hide anything that overflows */
+  position: relative; /* relative positioning for child elements */
+}
 
-  .screen::before {
-    content: '';
-    position: absolute;
-    top: 0;
+.screen::before {
+  content: ""; /* empty content for the shine effect */
+  position: absolute; /* absolute positioning inside the screen */
+  top: 0; /* position at the top */
+  left: -100%; /* start off-screen */
+  width: 50%; /* width of the shine effect */
+  height: 100%; /* cover full height */
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  ); /* create a gradient shine */
+  animation: shine 1.5s infinite; /* animate the shine effect */
+}
+
+@keyframes shine {
+  0% {
     left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    animation: shine 1.5s infinite;
-  }
+  } /* start from the left off-screen */
+  100% {
+    left: 200%;
+  } /* end to the right off-screen */
+}
 
-  @keyframes shine {
-    0% { left: -100%; }
-    100% { left: 200%; }
-  }
+.film-reel {
+  position: absolute; /* absolute positioning */
+  top: 50%; /* vertically center the reel */
+  left: 50%; /* horizontally center the reel */
+  transform: translate(-50%, -50%); /* adjust to perfectly center it */
+  width: 50px; /* size of the reel */
+  height: 50px; /* size of the reel */
+  border-radius: 50%; /* circular shape */
+  border: 3px solid #f59e0b; /* yellow border */
+  animation: rotate 2s linear infinite; /* rotate the reel */
+}
 
-  .film-reel {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 3px solid #f59e0b;
-    animation: rotate 2s linear infinite;
-  }
+.film-reel::before {
+  content: ""; /* empty content for the center of the reel */
+  position: absolute; /* absolute positioning inside the reel */
+  top: 50%; /* vertically center it */
+  left: 50%; /* horizontally center it */
+  transform: translate(-50%, -50%); /* adjust to perfectly center it */
+  width: 20px; /* size of the center circle */
+  height: 20px; /* size of the center circle */
+  background-color: #111827; /* dark background */
+  border-radius: 50%; /* circular shape */
+  border: 2px solid #f59e0b; /* yellow border */
+}
 
-  .film-reel::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background-color: #111827;
-    border-radius: 50%;
-    border: 2px solid #f59e0b;
-  }
+.sprocket {
+  position: absolute; /* absolute positioning */
+  width: 10px; /* sprocket size */
+  height: 10px; /* sprocket size */
+  background-color: #111827; /* dark color */
+  border: 1px solid #f59e0b; /* yellow border */
+  border-radius: 50%; /* circular shape */
+}
 
-  .sprocket {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #111827;
-    border: 1px solid #f59e0b;
-    border-radius: 50%;
-  }
+.sprocket:nth-child(1) {
+  top: -5px;
+  left: calc(50% - 5px);
+} /* position the sprockets */
+.sprocket:nth-child(2) {
+  top: calc(50% - 5px);
+  right: -5px;
+}
+.sprocket:nth-child(3) {
+  bottom: -5px;
+  left: calc(50% - 5px);
+}
+.sprocket:nth-child(4) {
+  top: calc(50% - 5px);
+  left: -5px;
+}
+.sprocket:nth-child(5) {
+  top: 15%;
+  left: 15%;
+}
+.sprocket:nth-child(6) {
+  top: 15%;
+  right: 15%;
+}
+.sprocket:nth-child(7) {
+  bottom: 15%;
+  right: 15%;
+}
+.sprocket:nth-child(8) {
+  bottom: 15%;
+  left: 15%;
+}
 
-  .sprocket:nth-child(1) { top: -5px; left: calc(50% - 5px); }
-  .sprocket:nth-child(2) { top: calc(50% - 5px); right: -5px; }
-  .sprocket:nth-child(3) { bottom: -5px; left: calc(50% - 5px); }
-  .sprocket:nth-child(4) { top: calc(50% - 5px); left: -5px; }
-  .sprocket:nth-child(5) { top: 15%; left: 15%; }
-  .sprocket:nth-child(6) { top: 15%; right: 15%; }
-  .sprocket:nth-child(7) { bottom: 15%; right: 15%; }
-  .sprocket:nth-child(8) { bottom: 15%; left: 15%; }
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  } /* start rotation */
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  } /* complete 360-degree rotation */
+}
 
-  @keyframes rotate {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-  }
+.film-strip {
+  position: absolute; /* absolute positioning */
+  top: 0; /* start at the top */
+  left: 0; /* start at the left */
+  width: 100%; /* full width */
+  height: 12px; /* height of the film strip */
+  background: repeating-linear-gradient(
+    90deg,
+    #111827,
+    #111827 10px,
+    #f59e0b 10px,
+    #f59e0b 15px
+  ); /* repeating gradient for the film strip */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* add shadow effect */
+  animation: filmMove 2s linear infinite; /* animate the film strip movement */
+}
 
-  .film-strip {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 12px;
-    background: repeating-linear-gradient(
-      90deg,
-      #111827,
-      #111827 10px,
-      #f59e0b 10px,
-      #f59e0b 15px
-    );
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-    animation: filmMove 2s linear infinite;
-  }
+@keyframes filmMove {
+  0% {
+    background-position: 0 0;
+  } /* starting position */
+  100% {
+    background-position: 25px 0;
+  } /* final position */
+}
 
-  @keyframes filmMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 25px 0; }
-  }
+.film-strip.bottom {
+  top: auto; /* move the strip to the bottom */
+  bottom: 0; /* align it to the bottom */
+  animation-direction: reverse; /* reverse the animation */
+}
 
-  .film-strip.bottom {
-    top: auto;
-    bottom: 0;
-    animation-direction: reverse;
-  }
+.seats {
+  position: absolute; /* absolute positioning */
+  bottom: 0; /* position at the bottom */
+  left: 0; /* align to the left */
+  width: 100%; /* full width */
+  height: 30px; /* seat row height */
+  background: #111827; /* dark background */
+  border-top: 2px solid #374151; /* dark top border */
+  display: flex; /* use flexbox for seat arrangement */
+  justify-content: center; /* center the seats */
+  align-items: flex-start; /* align seats at the top */
+  padding-top: 3px; /* padding on top of seats */
+}
 
-  .seats {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 30px;
-    background: #111827;
-    border-top: 2px solid #374151;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 3px;
-  }
+.seat-row {
+  display: flex; /* flexbox for row layout */
+  gap: 4px; /* space between seats */
+  margin: 0 2px; /* margin for seat rows */
+}
 
-  .seat-row {
-    display: flex;
-    gap: 4px;
-    margin: 0 2px;
-  }
+.seat {
+  width: 5px; /* seat size */
+  height: 5px; /* seat size */
+  background: #4b5563; /* seat color */
+  border-radius: 1px; /* rounded corners */
+  transition: background 0.3s; /* smooth transition for color */
+}
 
-  .seat {
-    width: 5px;
-    height: 5px;
-    background: #4b5563;
-    border-radius: 1px;
-    transition: background 0.3s;
-  }
+.seat.active {
+  background: #f59e0b; /* highlight active seat */
+  box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); /* add glow effect */
+}
 
-  .seat.active {
-    background: #f59e0b;
-    box-shadow: 0 0 5px rgba(245, 158, 11, 0.5);
-  }
+.logo {
+  margin-bottom: 25px; /* space below the logo */
+  font-family: "Arial", sans-serif; /* font style */
+  font-size: 32px; /* font size */
+  font-weight: bold; /* bold text */
+  background: linear-gradient(
+    to right,
+    #d97706,
+    #fcd34d
+  ); /* gradient for logo */
+  -webkit-background-clip: text; /* clip the background to the text */
+  background-clip: text; /* clip the background to the text */
+  color: transparent; /* make text transparent */
+  text-shadow: 0 0 15px rgba(245, 158, 11, 0.3); /* glowing text effect */
+  animation: pulse 2s infinite; /* pulsing effect for the logo */
+}
 
-  .logo {
-    margin-bottom: 25px;
-    font-family: 'Arial', sans-serif;
-    font-size: 32px;
-    font-weight: bold;
-    background: linear-gradient(to right, #d97706, #fcd34d);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+@keyframes pulse {
+  0% {
     text-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
-    animation: pulse 2s infinite;
-  }
+  } /* initial glow */
+  50% {
+    text-shadow: 0 0 25px rgba(245, 158, 11, 0.7);
+  } /* stronger glow */
+  100% {
+    text-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+  } /* reset glow */
+}
 
-  @keyframes pulse {
-    0% { text-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
-    50% { text-shadow: 0 0 25px rgba(245, 158, 11, 0.7); }
-    100% { text-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
-  }
+.loading-text {
+  margin-top: 25px; /* space above loading text */
+  font-family: "Arial", sans-serif; /* font style */
+  font-size: 16px; /* font size */
+  font-weight: bold; /* bold text */
+  color: #f59e0b; /* yellow text color */
+  text-transform: uppercase; /* make text uppercase */
+  letter-spacing: 3px; /* increase spacing between letters */
+}
 
-  .loading-text {
-    margin-top: 25px;
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    color: #f59e0b;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-  }
+.loading-dots {
+  display: inline-block; /* inline display for dots */
+}
 
-  .loading-dots {
-    display: inline-block;
-  }
+.loading-dots::after {
+  content: ""; /* empty content for dot animation */
+  animation: dots 1s infinite; /* animate the dots */
+}
 
-  .loading-dots::after {
-    content: '';
-    animation: dots 1s infinite;
-  }
+@keyframes dots {
+  0% {
+    content: ".";
+  } /* single dot */
+  33% {
+    content: "..";
+  } /* two dots */
+  66% {
+    content: "...";
+  } /* three dots */
+}
 
-  @keyframes dots {
-    0% { content: '.'; }
-    33% { content: '..'; }
-    66% { content: '...'; }
-  }
+.progress-bar {
+  width: 180px; /* set width */
+  height: 3px; /* set height */
+  background: #374151; /* dark background */
+  border-radius: 2px; /* rounded corners */
+  margin-top: 12px; /* margin from top */
+  overflow: hidden; /* hide overflow */
+}
 
-  .progress-bar {
-    width: 180px;
-    height: 3px;
-    background: #374151;
-    border-radius: 2px;
-    margin-top: 12px;
-    overflow: hidden;
-  }
+.progress {
+  height: 100%; /* full height of the bar */
+  background: linear-gradient(
+    to right,
+    #d97706,
+    #fcd34d
+  ); /* gradient for the progress */
+  width: 0; /* initial width is 0 */
+  animation: loading 1.8s ease-in-out forwards; /* animate the progress */
+}
 
-  .progress {
-    height: 100%;
-    background: linear-gradient(to right, #d97706, #fcd34d);
+@keyframes loading {
+  0% {
     width: 0;
-    animation: loading 1.8s ease-in-out forwards;
-  }
-
-  @keyframes loading {
-    0% { width: 0; }
-    100% { width: 100%; }
-  }
-
-  .fade-out {
-    animation: fadeOut 0.4s forwards;
-  }
-
-  @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; visibility: hidden; }
-  }
-
-  .camera-flash {
-    position: absolute;
-    top: 0;
-    left: 0;
+  } /* start at 0 width */
+  100% {
     width: 100%;
-    height: 100%;
-    background-color: white;
+  } /* end at full width */
+}
+
+.fade-out {
+  animation: fadeOut 0.4s forwards; /* fade-out effect */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  } /* start fully visible */
+  to {
     opacity: 0;
-    pointer-events: none;
-    animation: flash 3.5s ease-out;
-  }
+    visibility: hidden;
+  } /* fade to invisible */
+}
 
-  @keyframes flash {
-    0% { opacity: 0; }
-    5% { opacity: 0.8; }
-    10% { opacity: 0; }
-    15% { opacity: 0.4; }
-    20% { opacity: 0; }
-  }
+.camera-flash {
+  position: absolute; /* absolute positioning */
+  top: 0; /* align to the top */
+  left: 0; /* align to the left */
+  width: 100%; /* full width */
+  height: 100%; /* full height */
+  background-color: white; /* white flash background */
+  opacity: 0; /* start invisible */
+  pointer-events: none; /* disable interactions */
+  animation: flash 3.5s ease-out; /* animate the flash */
+}
 
-  .clapperboard {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 40px;
-    height: 30px;
-    border: 2px solid #f59e0b;
-    border-radius: 3px;
+@keyframes flash {
+  0% {
+    opacity: 0;
+  } /* start invisible */
+  5% {
+    opacity: 0.8;
+  } /* flash visible */
+  10% {
+    opacity: 0;
+  } /* return to invisible */
+  15% {
+    opacity: 0.4;
+  } /* partially visible */
+  20% {
+    opacity: 0;
+  } /* return to invisible */
+}
+
+.clapperboard {
+  position: absolute; /* absolute positioning */
+  bottom: 10px; /* position at the bottom */
+  right: 10px; /* position at the right */
+  width: 40px; /* clapperboard width */
+  height: 30px; /* clapperboard height */
+  border: 2px solid #f59e0b; /* yellow border */
+  border-radius: 3px; /* rounded corners */
+  transform: rotate(-10deg); /* tilted clapperboard */
+  animation: clap 1.5s ease-in-out infinite; /* animate clapping */
+}
+
+.clapperboard::before {
+  content: ""; /* empty content for the top of the clapperboard */
+  position: absolute; /* absolute positioning */
+  top: -8px; /* position above the board */
+  left: 0; /* align to the left */
+  width: 100%; /* full width */
+  height: 8px; /* height of the top part */
+  background: #f59e0b; /* yellow color */
+  border-radius: 3px 3px 0 0; /* rounded corners */
+}
+
+.clapperboard::after {
+  content: ""; /* empty content for the lower part */
+  position: absolute; /* absolute positioning */
+  top: 5px; /* position below the top part */
+  left: 0; /* align to the left */
+  width: 100%; /* full width */
+  height: 3px; /* height of the bottom part */
+  background: #f59e0b; /* yellow color */
+  box-shadow: 0 8px 0 #f59e0b, 0 16px 0 #f59e0b; /* shadow effect */
+}
+
+@keyframes clap {
+  0% {
     transform: rotate(-10deg);
-    animation: clap 1.5s ease-in-out infinite;
-  }
-
-  .clapperboard::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background: #f59e0b;
-    border-radius: 3px 3px 0 0;
-  }
-
-  .clapperboard::after {
-    content: '';
-    position: absolute;
-    top: 5px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: #f59e0b;
-    box-shadow: 0 8px 0 #f59e0b, 0 16px 0 #f59e0b;
-  }
-
-  @keyframes clap {
-    0% { transform: rotate(-10deg); }
-    5% { transform: rotate(5deg); }
-    10% { transform: rotate(-10deg); }
-    100% { transform: rotate(-10deg); }
-  }
+  } /* starting rotation */
+  5% {
+    transform: rotate(5deg);
+  } /* tilt in the opposite direction */
+  10% {
+    transform: rotate(-10deg);
+  } /* return to initial rotation */
+  100% {
+    transform: rotate(-10deg);
+  } /* finish rotation */
+}
