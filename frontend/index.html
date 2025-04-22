@@ -29,211 +29,210 @@
 
 </head>
 
-<body class="bg-black text-gray-100 min-h-screen">
+  <body class="bg-black text-gray-100 min-h-screen">
 
-  <iframe id="preloader-frame" src="preloader.html" style="position:fixed; top:0; left:0; width:100%; height:100%; border:none; z-index:9999;"></iframe>
+    <iframe id="preloader-frame" src="preloader.html" style="position:fixed; top:0; left:0; width:100%; height:100%; border:none; z-index:9999;"></iframe>
 
-  <div class="flex">
+    <div class="flex">
 
-    <!-- sidebar -->
-    <aside class="fixed h-screen w-16 md:w-64 bg-gray-900 border-r border-gray-800 shadow-xl z-10 transition-all">
+      <!-- sidebar -->
+      <aside class="fixed h-screen w-16 md:w-64 bg-gray-900 border-r border-gray-800 shadow-xl z-10 transition-all">
 
-      <!-- logo / title -->
-      <div class="flex items-center justify-center h-16 md:h-20 border-b border-gray-800">
-        <h1 class="hidden md:block text-2xl font-bold text-amber-500">SMDB</h1>
-        <span class="block md:hidden text-xl font-bold text-amber-500">
-          <i class="fas fa-film"></i>
-        </span>
-      </div>
+        <!-- logo / title -->
+        <div class="flex items-center justify-center h-16 md:h-20 border-b border-gray-800">
+          <h1 class="hidden md:block text-2xl font-bold text-amber-500">SMDB</h1>
+          <span class="block md:hidden text-xl font-bold text-amber-500">
+            <i class="fas fa-film"></i>
+          </span>
+        </div>
 
-      <!-- sidebar content -->
-      <div class="p-4">
+        <!-- sidebar content -->
+        <div class="p-4">
 
-        <!-- top genres section -->
-        <div class="hidden md:block mb-8" ng-if="genreStats.length">
-          <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-4">Top genres</h3>
-          <div class="space-y-3">
-        
-            <div class="relative pt-1" ng-repeat="genre in genreStats | limitTo:5">
-              <div class="flex mb-2 items-center justify-between">
-                <div>
-                  <span class="text-xs font-semibold inline-block text-amber-400">{{ genre.name }}</span>
+          <!-- top genres section -->
+          <div class="hidden md:block mb-8" ng-if="genreStats.length">
+            <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-4">Top genres</h3>
+            <div class="space-y-3">
+          
+              <div class="relative pt-1" ng-repeat="genre in genreStats | limitTo:5">
+                <div class="flex mb-2 items-center justify-between">
+                  <div>
+                    <span class="text-xs font-semibold inline-block text-amber-400">{{ genre.name }}</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-semibold inline-block text-amber-400">{{ genre.percent }}%</span>
+                  </div>
                 </div>
-                <div class="text-right">
-                  <span class="text-xs font-semibold inline-block text-amber-400">{{ genre.percent }}%</span>
+                <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-800">
+                  <div 
+                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-amber-500 to-amber-300"
+                    ng-style="{ width: genre.percent + '%' }">
+                  </div>
                 </div>
               </div>
-              <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-800">
-                <div 
-                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-amber-500 to-amber-300"
-                  ng-style="{ width: genre.percent + '%' }">
-                </div>
-              </div>
+          
             </div>
-        
-          </div>
-        </div>        
+          </div>        
 
-        <!-- popular franchises section -->
+          <!-- popular franchises section -->
+          <div class="hidden md:block">
+            <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-4">Popular frenchises</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-gradient-to-r from-amber-500 to-amber-300 text-xs px-2 py-1 rounded-full text-black">#alien</span>
+              <span class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#quietplace</span>
+              <span class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#terminator</span>
+              <span class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#avengers</span>
+              <span class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#got</span>
+              <span class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#matrix</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- useful links -->
         <div class="hidden md:block">
-          <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-4">Popular frenchises</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-gradient-to-r from-amber-500 to-amber-300 text-xs px-2 py-1 rounded-full text-black">#alien</span>
-            <span class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#quietplace</span>
-            <span class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#terminator</span>
-            <span class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#avengers</span>
-            <span class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#got</span>
-            <span class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#matrix</span>
+          <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-4 text-left ml-4">Useful Links</h3>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <a href="https://www.omdbapi.com/" target="_blank" class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300 hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700">
+              OMDb
+            </a>
+            <a href="https://www.imdb.com/" target="_blank" class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300 hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700">
+              IMDb
+            </a>
+            <a href="https://www.rottentomatoes.com/" target="_blank" class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300 hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700">
+              Rotten Tomatoes
+            </a>
           </div>
         </div>
 
-      </div>
+      </aside>
 
-      <!-- useful links -->
-      <div class="hidden md:block">
-        <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-4 text-left ml-4">Useful Links</h3>
-        <div class="flex flex-wrap gap-2 justify-center">
-          <a href="https://www.omdbapi.com/" target="_blank" class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300 hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700">
-            OMDb
-          </a>
-          <a href="https://www.imdb.com/" target="_blank" class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300 hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700">
-            IMDb
-          </a>
-          <a href="https://www.rottentomatoes.com/" target="_blank" class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300 hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700">
-            Rotten Tomatoes
-          </a>
-        </div>
-      </div>
+      <!-- main content container -->
+      <div class="ml-16 md:ml-64 w-full flex flex-col min-h-screen">
 
-    </aside>
-
-    <!-- main content container -->
-    <div class="ml-16 md:ml-64 w-full flex flex-col min-h-screen">
-
-      <!-- header / search + sorting -->
-      <header class="sticky top-0 bg-gray-900/90 backdrop-blur-sm shadow-lg p-4 border-b border-gray-800 z-10">
-        <div class="flex items-center justify-between">
-          <h1 class="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-300 text-transparent bg-clip-text">Series & Movies Database</h1>  
-        </div>
-
-        <div class="mt-4 flex flex-col md:flex-row gap-4">
-
-          <!-- search input -->
-          <div class="relative flex-grow">
-            <i class="fas fa-search absolute left-3 top-3 text-gray-500"></i>
-            <input 
-              type="text" 
-              ng-model="searchTitle"
-              placeholder="Search by title..." 
-              class="w-full pl-10 pr-4 py-2 rounded-xl bg-gradient-to-r from-amber-1000 to-amber-1400 text-gray-100 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-            />
+        <!-- header / search + sorting -->
+        <header class="sticky top-0 bg-gray-900/90 backdrop-blur-sm shadow-lg p-4 border-b border-gray-800 z-10">
+          
+          <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-300 text-transparent bg-clip-text">Series & Movies Database</h1>  
           </div>
 
-          <!-- sorting dropdown -->
-          <div class="custom-sort-dropdown" ng-controller="SortController">
+          <div class="mt-4 flex flex-col md:flex-row gap-4">
 
-            <div class="sort-header" ng-click="toggleDropdown()" tabindex="0">
-              <i class="fas fa-sort"></i>
-              <span>{{ selectedOption.label || 'Sort' }}</span>
-              <i class="fas chevron" ng-class="{'fa-chevron-down': !showOptions, 'fa-chevron-up': showOptions}"></i>
+            <!-- search input -->
+            <div class="relative flex-grow">
+              <i class="fas fa-search absolute left-3 top-3 text-gray-500"></i>
+              <input 
+                type="text" 
+                ng-model="searchTitle"
+                placeholder="Search by title..." 
+                class="w-full pl-10 pr-4 py-2 rounded-xl bg-gradient-to-r from-amber-1000 to-amber-1400 text-gray-100 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              />
             </div>
 
-            <div class="sort-options" ng-class="{'show': showOptions}">
-              <div class="sort-option" ng-class="{'active': !selectedOption}" ng-click="selectOption(null)">
-                <i class="fas fa-check"></i>
-                <span>Sort</span>
+            <!-- sorting dropdown -->
+            <div class="custom-sort-dropdown" ng-controller="SortController">
+
+              <div class="sort-header" ng-click="toggleDropdown()" tabindex="0">
+                <i class="fas fa-sort"></i>
+                <span>{{ selectedOption.label || 'Sort' }}</span>
+                <i class="fas chevron" ng-class="{'fa-chevron-down': !showOptions, 'fa-chevron-up': showOptions}"></i>
               </div>
 
-              <div class="sort-option" ng-class="{'active': selectedOption.value === 'title'}" ng-click="selectOption({value: 'title', label: 'By Title'})">
-                <i class="fas fa-check"></i>
-                <span>By Title</span>
-              </div>
-
-              <div class="sort-option" ng-class="{'active': selectedOption.value === 'release_date'}" ng-click="selectOption({value: 'release_date', label: 'By Release Date'})">
-                <i class="fas fa-check"></i>
-                <span>By Release Date</span>
-              </div>
-
-              <div class="sort-option" ng-class="{'active': selectedOption.value === 'director'}" ng-click="selectOption({value: 'director', label: 'By Director'})">
-                <i class="fas fa-check"></i>
-                <span>By Director</span>
-              </div>
-
-              <div class="sort-option" ng-class="{'active': selectedOption.value === 'imdb_rating'}" ng-click="selectOption({value: 'imdb_rating', label: 'By IMDb Rating'})">
-                <i class="fas fa-check"></i>
-                <span>By IMDb Rating</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </header>
-
-      <!-- main cards section -->
-      <main class="container mx-auto px-4 py-6">
-        <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
-          <!-- single card item -->
-          <div 
-            class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-amber-500/20"
-            ng-repeat="x in entries | filter:startsWithFilter | orderBy: sortBy:sortOrder()"
-          >
-            <!-- movie image -->
-            <div class="relative">
-              <img src="{{ x.img }}" alt="{{ x.title }}" class="w-full h-64 object-cover">
-              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                <h2 class="text-xl font-bold text-white">{{ x.title }}</h2>
-                <p class="text-amber-400">{{ x.release_date }}</p>
-              </div>
-              <!-- imdb rating badge -->
-              <div class="absolute top-3 right-3 bg-black/60 text-amber-400 font-bold px-2 py-1 rounded-full flex items-center">
-                <i class="fas fa-star text-amber-400 mr-1"></i>
-                {{ x.imdb_rating }}
-              </div>
-            </div>
-
-            <!-- movie details -->
-            <div class="p-4 flex flex-col h-full">
-              <div class="flex-grow">
-                <div class="flex justify-between items-center mb-2">
-                  <p class="font-medium text-gray-300">{{ x.director }}</p>
-                  <span class="bg-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">{{ x.category }}</span>
+              <div class="sort-options" ng-class="{'show': showOptions}">
+                <div class="sort-option" ng-class="{'active': !selectedOption}" ng-click="selectOption(null)">
+                  <i class="fas fa-check"></i>
+                  <span>Sort</span>
                 </div>
-                <p class="text-gray-400 text-sm mb-4">{{ x.descr }}</p>
-              </div>
 
-              <!-- actors + stream button -->
-              <div>
-                <p class="text-sm font-semibold text-gray-300 mb-1">
-                  <i class="fas fa-user-friends text-amber-400 mr-1"></i>
-                  <span class="text-amber-400">Actors:</span> {{ x.actor }}
-                </p>
+                <div class="sort-option" ng-class="{'active': selectedOption.value === 'title'}" ng-click="selectOption({value: 'title', label: 'By Title'})">
+                  <i class="fas fa-check"></i>
+                  <span>By Title</span>
+                </div>
 
-                <a ng-href="{{ x.stream_link }}" target="_blank">
-                  <button class="mt-4 w-full bg-amber-500 hover:bg-amber-600 text-black font-medium py-2 rounded-lg transition-colors flex items-center justify-center">
-                    <i class="fas fa-play mr-2"></i> Watch Now
-                  </button>
-                </a>
+                <div class="sort-option" ng-class="{'active': selectedOption.value === 'release_date'}" ng-click="selectOption({value: 'release_date', label: 'By Release Date'})">
+                  <i class="fas fa-check"></i>
+                  <span>By Release Date</span>
+                </div>
+
+                <div class="sort-option" ng-class="{'active': selectedOption.value === 'director'}" ng-click="selectOption({value: 'director', label: 'By Director'})">
+                  <i class="fas fa-check"></i>
+                  <span>By Director</span>
+                </div>
+
+                <div class="sort-option" ng-class="{'active': selectedOption.value === 'imdb_rating'}" ng-click="selectOption({value: 'imdb_rating', label: 'By IMDb Rating'})">
+                  <i class="fas fa-check"></i>
+                  <span>By IMDb Rating</span>
+                </div>
               </div>
             </div>
           </div>
 
-        </div>
-      </main>
+        </header>
 
-      <!-- footer -->
-      <footer class="bg-gray-900 border-t border-gray-600 p-6 text-center text-gray-300 shadow-2xl">
-        <p class="text-sm">&copy; 2025 SMDB - Series & Movies Database</p>
-        <p class="text-xs mt-2">Created with ❤️ by Me</p>
-      </footer>
+        <!-- main cards section -->
+        <main class="container mx-auto px-4 py-6">
+
+          <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+            <!-- single card item -->
+            <div 
+              class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-amber-500/20"
+              ng-repeat="x in entries | filter:startsWithFilter | orderBy: sortBy:sortOrder()"
+            >
+              <!-- movie image -->
+              <div class="relative">
+                <img src="{{ x.img }}" alt="{{ x.title }}" class="w-full h-64 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                  <h2 class="text-xl font-bold text-white">{{ x.title }}</h2>
+                  <p class="text-amber-400">{{ x.release_date }}</p>
+                </div>
+                <!-- imdb rating badge -->
+                <div class="absolute top-3 right-3 bg-black/60 text-amber-400 font-bold px-2 py-1 rounded-full flex items-center">
+                  <i class="fas fa-star text-amber-400 mr-1"></i>
+                  {{ x.imdb_rating }}
+                </div>
+              </div>
+
+              <!-- movie details -->
+              <div class="p-4 flex flex-col h-full">
+                <div class="flex-grow">
+                  <div class="flex justify-between items-center mb-2">
+                    <p class="font-medium text-gray-300">{{ x.director }}</p>
+                    <span class="bg-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">{{ x.category }}</span>
+                  </div>
+                  <p class="text-gray-400 text-sm mb-4">{{ x.descr }}</p>
+                </div>
+
+                <!-- actors + stream button -->
+                <div>
+                  <p class="text-sm font-semibold text-gray-300 mb-1">
+                    <i class="fas fa-user-friends text-amber-400 mr-1"></i>
+                    <span class="text-amber-400">Actors:</span> {{ x.actor }}
+                  </p>
+
+                  <a ng-href="{{ x.stream_link }}" target="_blank">
+                    <button class="mt-4 w-full bg-amber-500 hover:bg-amber-600 text-black font-medium py-2 rounded-lg transition-colors flex items-center justify-center">
+                      <i class="fas fa-play mr-2"></i> Watch Now
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </main>
+
+        <!-- footer -->
+        <footer class="bg-gray-900 border-t border-gray-600 p-6 text-center text-gray-300 shadow-2xl">
+          <p class="text-sm">&copy; 2025 SMDB - Series & Movies Database</p>
+          <p class="text-xs mt-2">Created with ❤️ by Me</p>
+        </footer>
+
+      </div>
 
     </div>
 
-  </div>
-
-</body>
+  </body>
 
 </html>
