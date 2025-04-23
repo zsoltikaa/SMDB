@@ -9,7 +9,6 @@
 ---
 
 ## ✨ **Features**
-
 - **🔍 Search by Title**  
   Instantly find your favorite movies or series using the homepage search bar.
   
@@ -28,9 +27,6 @@
   
 - **▶️ Watch Now**  
   A "Watch Now" button that links directly to streaming platforms, making it easy to watch your chosen movie.
-  
-- **📱 Fully Responsive**  
-  The app adapts seamlessly to both desktop and mobile devices, ensuring the best experience across all screen sizes.
 
 - **⚡ Dynamic Content**  
   Data is fetched in real-time from a MySQL database, providing up-to-date information at all times.
@@ -48,16 +44,3 @@
 ### **Backend**
 - **PHP** – Server-side language used to manage backend processes like querying the MySQL database and handling user interactions.
 - **MySQL** – Relational database management system that stores all movie and series data (e.g., title, description, actors, ratings, etc.).
-
----
-
-## 📦 **Installation**
-
-To get started with **SMDB** on your local machine, follow these steps:
-
-### 1. Clone the Repository
-Clone the repo to your local machine:
-
-```bash
-git clone https://github.com/yourusername/smdb.git
-cd smdb
