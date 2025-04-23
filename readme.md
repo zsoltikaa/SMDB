@@ -36,7 +36,7 @@
 ## 🛠️ **Tech Stack**
 
 ### **Frontend**
-- ![Tech Stack](https://skillicons.dev/icons?i=angular)**AngularJS** (v1.8.2) – Powerful framework for building dynamic single-page applications (SPA), handling data binding, controllers, and UI updates.
+- **AngularJS** (v1.8.2) – Powerful framework for building dynamic single-page applications (SPA), handling data binding, controllers, and UI updates.
 - **Tailwind CSS** – A utility-first CSS framework for efficient and modern styling.
 - **Font Awesome** – Beautiful icons to enhance the user interface.
 - **HTML5 & CSS3** – For semantic structure and responsive layout.
