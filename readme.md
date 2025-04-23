@@ -27,9 +27,6 @@
   
 - **▶️ Watch Now**  
   A "Watch Now" button that links directly to streaming platforms, making it easy to watch your chosen movie.
-  
-- **📱 Fully Responsive**  
-  The app adapts seamlessly to both desktop and mobile devices, ensuring the best experience across all screen sizes.
 
 - **⚡ Dynamic Content**  
   Data is fetched in real-time from a MySQL database, providing up-to-date information at all times.
@@ -39,7 +36,7 @@
 ## 🛠️ **Tech Stack**
 
 ### **Frontend**
-- **AngularJS** (v1.8.2) – Powerful framework for building dynamic single-page applications (SPA), handling data binding, controllers, and UI updates.
+- ![Tech Stack](https://skillicons.dev/icons?i=angular)**AngularJS** (v1.8.2) – Powerful framework for building dynamic single-page applications (SPA), handling data binding, controllers, and UI updates.
 - **Tailwind CSS** – A utility-first CSS framework for efficient and modern styling.
 - **Font Awesome** – Beautiful icons to enhance the user interface.
 - **HTML5 & CSS3** – For semantic structure and responsive layout.
