@@ -44,16 +44,3 @@
 ### **Backend**
 - **PHP** – Server-side language used to manage backend processes like querying the MySQL database and handling user interactions.
 - **MySQL** – Relational database management system that stores all movie and series data (e.g., title, description, actors, ratings, etc.).
-
----
-
-## 📦 **Installation**
-
-To get started with **SMDB** on your local machine, follow these steps:
-
-### 1. Clone the Repository
-Clone the repo to your local machine:
-
-```bash
-git clone https://github.com/yourusername/smdb.git
-cd smdb
