@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS entries (
   release_date VARCHAR(255) NOT NULL,                 -- release date (stored as string)
   imdb_rating VARCHAR(255) NOT NULL,                  -- imdb rating (stored as string)
   stream_link VARCHAR(255) NOT NULL,                  -- streaming platform url
+  trailer_link VARCHAR(255) NOT NULL,                 -- trailer url
   medium ENUM('movie', 'series') NOT NULL,            -- type: either movie or series
   genre VARCHAR(255) NOT NULL                         -- genre of the entry
 );
