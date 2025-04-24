@@ -2,3 +2,4 @@
 -- aside legtetejere 2 teglalap alaku gomb amivel lehet switch-elni, 
    hogy filmeket vagy sorozatokat lasson a felhasznalo
 -- regisztracio utani kommenteles es ertekeles ??????????????
+-- readme.md frissitese a projekt legeslegvegen
