@@ -46,7 +46,7 @@ app.controller('MainController', function($scope, $http) {
     // initialize the sortBy model which is used for sorting entries in the view
     $scope.sortBy = "";
 
-    // 
+    // default mediumFilter value
     $scope.mediumFilter = 'Movie';
 
     $scope.mediumTypeFilter = function(item) {
