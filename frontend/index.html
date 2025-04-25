@@ -215,7 +215,7 @@
             ng-repeat="x in entries | filter:startsWithFilter | orderBy: sortBy:sortOrder() | filter:mediumTypeFilter">
             <!-- movie image -->
             <div class="relative">
-              <img src="{{ x.img }}" alt="{{ x.title }}" class="w-full h-64 object-cover">
+              <img src="assets/img/{{ x.img }}" alt="{{ x.title }}" class="w-full h-64 object-cover">
               <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                 <h2 class="text-xl font-bold text-white">{{ x.title }}</h2>
                 <p class="text-amber-400">{{ x.release_date }}</p>
