@@ -46,6 +46,13 @@ app.controller('MainController', function($scope, $http) {
     // initialize the sortBy model which is used for sorting entries in the view
     $scope.sortBy = "";
 
+    // 
+    $scope.mediumFilter = 'Movie';
+
+    $scope.mediumTypeFilter = function(item) {
+        return item.medium === $scope.mediumFilter;
+    };
+
     // define a custom filter function that checks if the item's title starts with the search input
     $scope.startsWithFilter = function(item) 
     {
