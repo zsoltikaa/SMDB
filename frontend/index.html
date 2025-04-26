@@ -2,7 +2,6 @@
 <html lang="hu" ng-app="SMDB" ng-controller="MainController">
 
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SMDB</title>
@@ -21,6 +20,9 @@
 
   <!-- angularjs core -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  
+  <!-- AngularJS animation module -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.min.js"></script>
 
   <!-- custom app logic -->
   <script src="js/app.js"></script>
@@ -29,7 +31,7 @@
 
 </head>
 
-<body class="bg-black text-gray-100 min-h-screen">
+<body class="bg-black text-gray-100 min-h-screen page-transition">
 
   <iframe id="preloader-frame" src="preloader.html"
     style="position:fixed; top:0; left:0; width:100%; height:100%; border:none; z-index:9999;"></iframe>
@@ -78,7 +80,7 @@
           <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-4">Top genres</h3>
           <div class="space-y-3">
 
-            <div class="relative pt-1" ng-repeat="genre in genreStats | limitTo:5">
+            <div class="relative pt-1 genre-stats-item" ng-repeat="genre in genreStats | limitTo:5">
               <div class="flex mb-1 items-center justify-between">
                 <div>
                   <span class="text-xs font-semibold inline-block text-amber-400">{{ genre.name }}</span>
@@ -217,7 +219,7 @@
         <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <!-- single card item -->
           <div
-            class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-amber-500/20 flex flex-col"
+            class="card-item bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-amber-500/20 flex flex-col fade-animation"
             ng-repeat="x in entries | filter:startsWithFilter | orderBy: sortBy:sortOrder() | filter:mediumTypeFilter">
             <!-- movie image -->
             <div class="relative">
