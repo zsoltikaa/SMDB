@@ -1,4 +1,3 @@
 -- regisztracio utani kommenteles es ertekeles ??????????????
--- novekvo/csokkeno gomb hozzadasa
 
 -- readme.md frissitese a projekt legeslegvegen
