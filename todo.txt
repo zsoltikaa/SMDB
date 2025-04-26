@@ -1,5 +1,4 @@
 -- regisztracio utani kommenteles es ertekeles ??????????????
 -- novekvo/csokkeno gomb hozzadasa
--- 3 sorozat es 2 film hozzaadasa
 
 -- readme.md frissitese a projekt legeslegvegen
