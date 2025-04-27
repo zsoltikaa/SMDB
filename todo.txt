@@ -1,3 +1,4 @@
 -- regisztracio utani kommenteles es ertekeles ??????????????
+-- preloader eltunese utan nem tudok kattintani sehovasem
 
 -- readme.md frissitese a projekt legeslegvegen
