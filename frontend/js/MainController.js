@@ -43,6 +43,15 @@ app.controller('MainController', function($scope, $http) {
         console.error('Error when loading data:', error);
     });
 
+    // fetch top actors data
+    $http.get("http://localhost/SMDB/backend/api/topactors.php")
+    .then(function(response) {
+        $scope.topActors = response.data;
+    })
+    .catch(function(error) {
+        console.error('Error when loading top actors:', error);
+    });
+
     // initialize the sortBy model which is used for sorting entries in the view
     $scope.sortBy = "";
 

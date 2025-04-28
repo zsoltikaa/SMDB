@@ -99,25 +99,23 @@
             </div>
           </div>
 
-          <!-- popular franchises section -->
+          <!-- top actors section -->
           <div class="hidden md:block">
-            <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-4">Popular frenchises</h3>
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="bg-gradient-to-r from-amber-500 to-amber-300 text-xs px-2 py-1 rounded-full text-black">#alien</span>
-              <span
-                class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#quietplace</span>
-              <span
-                class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#terminator</span>
-              <span
-                class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#avengers</span>
-              <span
-                class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#got</span>
-              <span
-                class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300">#matrix</span>
+            <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-2">Top Featured Actors</h3>
+            <div class="space-y-2">
+              <div class="relative pt-1 actor-stats-item" ng-repeat="actor in topActors | limitTo:3">
+                <div class="flex items-center justify-between mb-1">
+                  <div>
+                    <!-- Színészek neve kiemelve, vastagon, színnel -->
+                    <span class="text-sm font-bold text-amber-500">{{ actor.name }}</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-semibold inline-block text-amber-400">{{ actor.moviesCount }} movies</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
         </div>
 
         <!-- useful links -->
