@@ -1,4 +1,5 @@
 -- regisztracio utani kommenteles es ertekeles ??????????????
 -- preloader eltunese utan nem tudok kattintani sehovasem
+-- top frenchises szekcio lecserelese dinamikus top actor/actress szekciora
 
 -- readme.md frissitese a projekt legeslegvegen
