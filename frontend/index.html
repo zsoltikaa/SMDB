@@ -2,7 +2,7 @@
 <html lang="hu" ng-app="SMDB" ng-controller="MainController">
 
 <head>
-  
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SMDB</title>
@@ -165,8 +165,6 @@
               <div class="sort-header flex items-center gap-2" ng-click="toggleDropdown()" tabindex="0">
                 <i class="fas fa-sort"></i>
                 <span>{{ selectedOption.label || 'Sort' }}</span>
-                
-                <!-- új sorrend váltó gomb -->
                 <button type="button" ng-click="toggleOrder(); $event.stopPropagation();"
                   class="ml-auto text-gray-400 hover:text-amber-400 transition-all">
                   <i class="fas" ng-class="getOrderIcon()"></i>
@@ -221,9 +219,6 @@
               <!-- movie image -->
               <div class="relative">
                 <img src="assets/img/{{ x.img }}" alt="{{ x.title }}" class="w-full h-64 object-cover">
-                <div class="absolute top-3 left-3 text-amber-400 text-2xl cursor-pointer">
-                  <i class="fas fa-comment"></i>
-                </div>
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                   <h2 class="text-xl font-bold text-white">{{ x.title }}</h2>
                   <p class="text-amber-400">{{ x.release_date }}</p>
