@@ -284,6 +284,321 @@
 
     </div>
 
+<!-- Review System Modal -->
+<div id="reviewModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: none;">
+  <div class="bg-gray-900 rounded-xl border border-gray-800 p-6 w-full max-w-md shadow-2xl transform transition-all" style="margin: auto; max-width: 500px;">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold text-amber-400">Add Your Review</h3>
+      <button onclick="closeReviewModal()" class="text-gray-400 hover:text-amber-500 transition-colors">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    
+    <form id="reviewForm" class="space-y-4">
+      <input type="hidden" id="reviewMovieId" name="movieId">
+      
+      <div>
+        <label for="username" class="block text-gray-300 mb-1">Username</label>
+        <input type="text" id="username" name="username" required
+          class="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500">
+      </div>
+      
+      <div>
+        <label class="block text-gray-300 mb-1">Rating</label>
+        <div class="flex items-center space-x-1" id="starRating">
+          <!-- Stars will be generated via JavaScript -->
+        </div>
+        <input type="hidden" id="ratingValue" name="rating" value="0">
+      </div>
+      
+      <div>
+        <label for="reviewText" class="block text-gray-300 mb-1">Your Review</label>
+        <textarea id="reviewText" name="review" rows="4" required
+          class="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+      </div>
+      
+      <button type="submit" 
+        class="w-full bg-gradient-to-r from-amber-600 to-amber-400 text-black font-medium py-2 rounded-lg transition-all duration-300 hover:shadow-lg hover:from-amber-500 hover:to-amber-300">
+        Submit Review
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Review Display Section (to add to each card) -->
+<template id="reviewsTemplate">
+  <div class="reviews-section mt-4 pt-3 border-t border-gray-700">
+    <div class="flex justify-between items-center mb-2">
+      <h4 class="text-amber-400 font-medium">
+        <i class="fas fa-star mr-1"></i> Reviews
+      </h4>
+      <button class="add-review-btn px-3 py-1 text-sm rounded-full bg-amber-500 text-black font-medium hover:bg-amber-400 transition-colors">
+        <i class="fas fa-plus mr-1"></i> Add
+      </button>
+    </div>
+    
+    <div class="reviews-container space-y-3 max-h-64 overflow-y-auto pr-1">
+      <!-- Reviews will be loaded here -->
+      <div class="text-center text-gray-400 text-sm py-3 no-reviews">No reviews yet</div>
+    </div>
+  </div>
+</template>
+
+<!-- Single Review Template -->
+<template id="singleReviewTemplate">
+  <div class="review-item bg-gray-800 rounded-lg p-3 border border-gray-700">
+    <div class="flex justify-between">
+      <div class="font-medium text-white review-username">Username</div>
+      <div class="text-amber-400 review-stars">★★★★☆</div>
+    </div>
+    <p class="text-gray-300 text-sm mt-1 review-text">Review text goes here</p>
+    <div class="text-gray-500 text-xs mt-2 review-date">2025-04-29</div>
+  </div>
+</template>
+
+<script>
+  // Initialize the review system after AngularJS has loaded the cards
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initReviewSystem, 3500);
+  });
+
+  function initReviewSystem() {
+    // Add review sections to all cards
+    const cards = document.querySelectorAll('.card-item');
+    
+    cards.forEach(card => {
+      // Find the movie ID or create one from the title
+      const titleElement = card.querySelector('h2');
+      const title = titleElement ? titleElement.textContent : 'Unknown';
+      const movieId = title.replace(/\s+/g, '_').toLowerCase();
+      
+      // Clone the reviews template
+      const reviewsTemplate = document.getElementById('reviewsTemplate');
+      const reviewsSection = reviewsTemplate.content.cloneNode(true);
+      
+      // Add the movie ID as data attribute
+      reviewsSection.querySelector('.reviews-section').dataset.movieId = movieId;
+      
+      // Add event listener to the Add button
+      reviewsSection.querySelector('.add-review-btn').addEventListener('click', function() {
+        openReviewModal(movieId, title);
+      });
+      
+      // Append to the card
+      const cardDetails = card.querySelector('.p-4');
+      cardDetails.appendChild(reviewsSection);
+      
+      // Load reviews for this movie
+      loadReviews(movieId);
+    });
+    
+    // Initialize star rating in modal
+    initStarRating();
+    
+    // Add event listener to review form
+    document.getElementById('reviewForm').addEventListener('submit', submitReview);
+  }
+
+  function initStarRating() {
+    const starRating = document.getElementById('starRating');
+    starRating.innerHTML = '';
+    
+    // Create 10 half-stars (5 full stars)
+    for (let i = 1; i <= 10; i++) {
+      const halfValue = i / 2;
+      const star = document.createElement('i');
+      
+      // Determine if it's a full star or half star
+      if (i % 2 === 0) {
+        star.className = 'fas fa-star star-rating-icon text-gray-500 hover:text-amber-400 cursor-pointer';
+      } else {
+        star.className = 'fas fa-star-half-alt star-rating-icon text-gray-500 hover:text-amber-400 cursor-pointer';
+      }
+      
+      star.dataset.value = halfValue;
+      
+      star.addEventListener('click', function() {
+        setRating(halfValue);
+      });
+      
+      star.addEventListener('mouseover', function() {
+        highlightStars(halfValue);
+      });
+      
+      starRating.appendChild(star);
+    }
+    
+    // Add mouse leave event to reset highlighting
+    starRating.addEventListener('mouseleave', function() {
+      const currentRating = document.getElementById('ratingValue').value;
+      highlightStars(currentRating);
+    });
+  }
+
+  function highlightStars(rating) {
+    const stars = document.querySelectorAll('.star-rating-icon');
+    stars.forEach(star => {
+      const starValue = parseFloat(star.dataset.value);
+      
+      if (starValue <= rating) {
+        star.classList.remove('text-gray-500');
+        star.classList.add('text-amber-400');
+      } else {
+        star.classList.remove('text-amber-400');
+        star.classList.add('text-gray-500');
+      }
+    });
+  }
+
+  function setRating(rating) {
+    document.getElementById('ratingValue').value = rating;
+    highlightStars(rating);
+  }
+
+  function openReviewModal(movieId, movieTitle) {
+    const modal = document.getElementById('reviewModal');
+    document.getElementById('reviewMovieId').value = movieId;
+    
+    // Reset form
+    document.getElementById('reviewForm').reset();
+    setRating(0);
+    
+    // Show modal - both using class and direct style
+    modal.classList.remove('hidden');
+    modal.style.display = 'flex';
+    
+    // Ensure proper positioning
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.right = '0';
+    modal.style.bottom = '0';
+    modal.style.zIndex = '9999';
+    
+    // Focus username field
+    document.getElementById('username').focus();
+  }
+
+  function closeReviewModal() {
+    const modal = document.getElementById('reviewModal');
+    modal.classList.add('hidden');
+    modal.style.display = 'none';
+  }
+
+  function submitReview(e) {
+    e.preventDefault();
+    
+    const movieId = document.getElementById('reviewMovieId').value;
+    const username = document.getElementById('username').value;
+    const rating = document.getElementById('ratingValue').value;
+    const reviewText = document.getElementById('reviewText').value;
+    
+    if (!username || !reviewText || rating == 0) {
+      alert('Please fill in all fields and select a rating');
+      return;
+    }
+    
+    const review = {
+      id: Date.now(), // Use timestamp as unique ID
+      movieId: movieId,
+      username: username,
+      rating: parseFloat(rating),
+      review: reviewText,
+      date: new Date().toISOString().split('T')[0]
+    };
+    
+    // Save to localStorage (in a real app, you'd send to the server)
+    saveReview(review);
+    
+    // Update UI
+    displayReview(review);
+    
+    // Close modal
+    closeReviewModal();
+  }
+
+  function saveReview(review) {
+    // Get existing reviews or initialize empty array
+    let reviews = JSON.parse(localStorage.getItem('smdbReviews')) || [];
+    
+    // Add the new review
+    reviews.push(review);
+    
+    // Save back to localStorage
+    localStorage.setItem('smdbReviews', JSON.stringify(reviews));
+  }
+
+  function loadReviews(movieId) {
+    // Get all reviews from localStorage
+    const allReviews = JSON.parse(localStorage.getItem('smdbReviews')) || [];
+    
+    // Filter reviews for this movie
+    const movieReviews = allReviews.filter(review => review.movieId === movieId);
+    
+    // Get the reviews container for this movie
+    const reviewsSection = document.querySelector(`.reviews-section[data-movie-id="${movieId}"]`);
+    if (!reviewsSection) return;
+    
+    const reviewsContainer = reviewsSection.querySelector('.reviews-container');
+    
+    // Clear the container
+    reviewsContainer.innerHTML = '';
+    
+    // Show "no reviews" message if needed
+    if (movieReviews.length === 0) {
+      const noReviews = document.createElement('div');
+      noReviews.className = 'text-center text-gray-400 text-sm py-3';
+      noReviews.textContent = 'No reviews yet';
+      reviewsContainer.appendChild(noReviews);
+      return;
+    }
+    
+    // Add each review to the container
+    movieReviews.forEach(review => {
+      displayReview(review);
+    });
+  }
+
+  function displayReview(review) {
+    // Find the reviews container for this movie
+    const reviewsSection = document.querySelector(`.reviews-section[data-movie-id="${review.movieId}"]`);
+    if (!reviewsSection) return;
+    
+    const reviewsContainer = reviewsSection.querySelector('.reviews-container');
+    
+    // Remove "no reviews" message if it exists
+    const noReviews = reviewsContainer.querySelector('.no-reviews');
+    if (noReviews) {
+      noReviews.remove();
+    }
+    
+    // Clone the single review template
+    const template = document.getElementById('singleReviewTemplate');
+    const reviewElement = template.content.cloneNode(true);
+    
+    // Fill in review data
+    reviewElement.querySelector('.review-username').textContent = review.username;
+    reviewElement.querySelector('.review-text').textContent = review.review;
+    reviewElement.querySelector('.review-date').textContent = review.date;
+    
+    // Generate stars
+    let starsHTML = '';
+    for (let i = 1; i <= 5; i++) {
+      if (i <= review.rating) {
+        starsHTML += '★';
+      } else if (i - 0.5 === review.rating) {
+        starsHTML += '½';
+      } else {
+        starsHTML += '☆';
+      }
+    }
+    reviewElement.querySelector('.review-stars').textContent = starsHTML;
+    
+    // Add to the container
+    reviewsContainer.prepend(reviewElement);
+  }
+</script>
+
   </body>
 
 </html>
