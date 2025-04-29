@@ -7,7 +7,7 @@
 
     require 'connect.php';
 
-    // lekérjük az összes actor mezőt
+    // fetch all actor fields
     $sql = "SELECT actor FROM entries";
     $result = mysqli_query($conn, $sql);
 
@@ -15,10 +15,10 @@
 
     if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
-            // színészek feldarabolása vessző mentén
+            // split actors by comma
             $actors = explode(',', $row['actor']);
             foreach ($actors as $actor) {
-                // nevek trimmelése (felesleges szóközök eltávolítása)
+                // trim names (remove unnecessary spaces)
                 $actor = trim($actor);
                 if ($actor !== '') {
                     if (!isset($actorCounts[$actor])) {
@@ -30,16 +30,16 @@
         }
     }
 
-    // rendezés előfordulás szerint, csökkenő sorrendben
+    // sort by occurrence in descending order
     arsort($actorCounts);
 
-    // összesített film szám
+    // total number of movies
     $totalMovies = array_sum($actorCounts);
 
-    // a top 3 színész kiválasztása
+    // select the top 3 actors
     $topActors = array_slice($actorCounts, 0, 3, true);
 
-    // az eredmény összerakása formázott tömbbé
+    // build the result into a formatted array
     $response = [];
 
     foreach ($topActors as $name => $moviesCount) {

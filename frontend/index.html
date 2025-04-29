@@ -2,6 +2,7 @@
 <html lang="hu" ng-app="SMDB" ng-controller="MainController">
 
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SMDB</title>
@@ -106,7 +107,6 @@
               <div class="relative pt-1 actor-stats-item" ng-repeat="actor in topActors | limitTo:3">
                 <div class="flex items-center justify-between mb-1">
                   <div>
-                    <!-- Színészek neve kiemelve, vastagon, színnel -->
                     <span class="text-sm font-bold text-amber-500">{{ actor.name }}</span>
                   </div>
                   <div class="text-right">
