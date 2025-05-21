@@ -1,4 +1,4 @@
-app.controller('MainController', function($scope, $http) {
+app.controller('MainController', function($scope, $http, $window, $document, $timeout) {
 
     // fetch data from the backend api using http get request
     $http.get("http://localhost/SMDB/backend/api/smdb.php").then(function(response) 
@@ -58,8 +58,28 @@ app.controller('MainController', function($scope, $http) {
     // default mediumFilter value
     $scope.mediumFilter = 'Movie';
 
+    // default searchDirector value
     $scope.searchDirector = '';
 
+    // default visibility
+    $scope.scrollBtnVisible = false;
+
+    // scroll event
+    angular.element($window).on('scroll', function() {
+        $scope.$applyAsync(() => {
+        if ($window.scrollY > $window.innerHeight / 0.089) {
+            $scope.scrollBtnVisible = true;
+        } else {
+            $scope.scrollBtnVisible = false;
+        }
+        });
+    });
+
+    // button press handle
+    $scope.scrollToTop = function() {
+        $window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    
     $scope.directorFilter = function(item) {
         if (!$scope.searchDirector) return true;
         return item.director.toLowerCase().includes($scope.searchDirector.toLowerCase());
