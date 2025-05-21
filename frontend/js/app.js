@@ -1,2 +1,2 @@
-// create a new AngularJS module named "SMDB" and inject the "ngAnimate" module for animations
-let app = angular.module("SMDB", ['ngAnimate']);
+// create a new angularjs module named "smdb" and inject the "nganimate" module for animations
+let app = angular.module('SMDB', ['ngAnimate']);

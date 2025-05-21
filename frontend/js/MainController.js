@@ -58,6 +58,13 @@ app.controller('MainController', function($scope, $http) {
     // default mediumFilter value
     $scope.mediumFilter = 'Movie';
 
+    $scope.searchDirector = '';
+
+    $scope.directorFilter = function(item) {
+        if (!$scope.searchDirector) return true;
+        return item.director.toLowerCase().includes($scope.searchDirector.toLowerCase());
+      };
+
     $scope.mediumTypeFilter = function(item) {
         return item.medium === $scope.mediumFilter;
     };
