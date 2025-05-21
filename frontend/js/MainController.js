@@ -1,4 +1,4 @@
-app.controller('MainController', function($scope, $http, $window, $document, $timeout) {
+app.controller('MainController', function($scope, $http, $window) {
 
     // fetch data from the backend api using http get request
     $http.get("http://localhost/SMDB/backend/api/smdb.php").then(function(response) 
