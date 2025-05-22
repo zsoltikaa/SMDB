@@ -178,20 +178,57 @@
             <!-- search inputs container -->
             <div class="flex gap-4 w-full max-w-4xl mx-auto">
 
-              <!-- search input -->
+              <!-- search for title -->
               <div class="relative flex-grow">
+
                 <i class="fas fa-search absolute left-3 top-3 text-gray-500"></i>
+
                 <input type="text" ng-model="searchTitle" placeholder="Search by title..."
-                  class="w-full pl-10 pr-4 py-2 rounded-xl bg-gradient-to-r from-amber-1000 to-amber-1400 text-gray-100 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"/>
+                  class="w-full pl-10 pr-10 py-2 rounded-xl bg-gradient-to-r from-amber-1000 to-amber-1400 text-gray-100 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"/>
+
+                <!-- title clear button -->
+                <button
+                  type="button"
+                  ng-click="searchTitle = ''"
+                  class="absolute right-3 text-amber-400 hover:text-amber-600 focus:outline-none transition-opacity duration-300"
+                  style="top: 50%; transform: translateY(-50%); font-size: 1.2rem;"
+                  aria-label="Clear search title"
+                  ng-style="{
+                    'opacity': (searchTitle.length > 0) ? '1' : '0',
+                    'pointer-events': (searchTitle.length > 0) ? 'auto' : 'none',
+                    'transition': 'opacity 0.3s ease'
+                  }"
+                >
+                  <i class="fas fa-times-circle"></i>
+                </button>
+
               </div>
 
-              <!-- director search input -->
+              <!-- search for director -->
               <div class="relative flex-grow">
+
                 <i class="fas fa-user-tie absolute left-3 top-3 text-gray-500"></i>
+
                 <input type="text" ng-model="searchDirector" placeholder="Search by director..."
-                  class="w-full pl-10 pr-4 py-2 rounded-xl bg-gradient-to-r from-amber-1000 to-amber-1400 text-gray-100 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent" />
+                  class="w-full pl-10 pr-10 py-2 rounded-xl bg-gradient-to-r from-amber-1000 to-amber-1400 text-gray-100 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent" />
+                
+                  <!-- director clear button -->
+                  <button
+                  type="button"
+                  ng-click="searchDirector = ''"
+                  class="absolute right-3 text-amber-400 hover:text-amber-600 focus:outline-none transition-opacity duration-300"
+                  style="top: 50%; transform: translateY(-50%); font-size: 1.2rem;"
+                  aria-label="Clear search director"
+                  ng-style="{
+                    'opacity': (searchDirector.length > 0) ? '1' : '0',
+                    'pointer-events': (searchDirector.length > 0) ? 'auto' : 'none',
+                    'transition': 'opacity 0.3s ease'
+                  }"
+                >
+                  <i class="fas fa-times-circle"></i>
+                </button>
+
               </div>
-            </div>
 
             <!-- sorting dropdown -->
             <div class="custom-sort-dropdown">
