@@ -15,6 +15,7 @@
     -moz-user-select: none;      /* firefox */
     -ms-user-select: none;       /* ie/edge */
     user-select: none;           /* standard */
+    cursor: none;
 }
 
 /* smooth scroll behavior for anchor links */
@@ -84,7 +85,7 @@ h1 {
 
 /* make buttons show pointer cursor on hover */
 button:hover {
-    cursor: pointer;
+    cursor: none;
 }
 
 /* sort header hover effect */
@@ -159,7 +160,7 @@ footer {
     border: 1px solid #525252;
     border-radius: 12px;
     color: #f5f5f5;
-    cursor: pointer;
+    cursor: none;
     transition: all 0.3s ease;
 }
 
@@ -203,7 +204,7 @@ footer {
 /* individual sort option */
 .sort-option {
     padding: 10px 16px;
-    cursor: pointer;
+    cursor: none;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
@@ -339,7 +340,7 @@ input[ng-model="searchDirector"]:focus {
     background: linear-gradient(135deg, #f59e0b, #b45309);
     color: white;
     border: none;
-    cursor: pointer;
+    cursor: none;
     box-shadow:
         0 4px 6px rgba(245, 158, 11, 0.6),
          0 0 15px rgba(245, 158, 11, 0.8);

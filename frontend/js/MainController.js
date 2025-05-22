@@ -1,4 +1,4 @@
-app.controller('MainController', function($scope, $http, $window) {
+app.controller('MainController', function($scope, $http, $window, $document, $timeout) {
 
     // fetch data from the backend api using http get request
     $http.get("http://localhost/SMDB/backend/api/smdb.php").then(function(response) 
@@ -71,11 +71,11 @@ app.controller('MainController', function($scope, $http, $window) {
     // scroll event
     angular.element($window).on('scroll', function() {
         $scope.$applyAsync(() => {
-        if ($window.scrollY > 7500) {
-            $scope.scrollBtnVisible = true;
-        } else {
-            $scope.scrollBtnVisible = false;
-        }
+            if ($window.scrollY > 7500) {
+                $scope.scrollBtnVisible = true;
+            } else {
+                $scope.scrollBtnVisible = false;
+            }
         });
     });
 
@@ -87,7 +87,7 @@ app.controller('MainController', function($scope, $http, $window) {
     $scope.directorFilter = function(item) {
         if (!$scope.searchDirector) return true;
         return item.director.toLowerCase().includes($scope.searchDirector.toLowerCase());
-      };
+    };
 
     $scope.mediumTypeFilter = function(item) {
         return item.medium === $scope.mediumFilter;
@@ -119,14 +119,14 @@ app.controller('MainController', function($scope, $http, $window) {
     $scope.ascending = true;
 
     $scope.resetFilters = function() {
-    $scope.mediumFilter = 'Movie';
-    $scope.searchDirector = '';
-    $scope.searchTitle = '';
-    $scope.selectedOption = null;
-    $scope.sortBy = '';
-    $scope.ascending = true;
-    $scope.showOptions = false;
-};
+        $scope.mediumFilter = 'Movie';
+        $scope.searchDirector = '';
+        $scope.searchTitle = '';
+        $scope.selectedOption = null;
+        $scope.sortBy = '';
+        $scope.ascending = true;
+        $scope.showOptions = false;
+    };
 
     // update the actual sort string (field name, possibly with minus for descending)
     function updateSortBy() {
@@ -215,5 +215,72 @@ app.controller('MainController', function($scope, $http, $window) {
         }, 3000); // this is the initial delay of 3 seconds before the preloader starts to disappear
 
     });
+
+    // ----------------------
+    // CUSTOM CURSOR + TRAIL
+    // ----------------------
+
+    const cursor = document.querySelector('.custom-cursor'); // get the main custom cursor element
+    const trailCount = 4; // number of trailing elements to create
+    const trails = []; // array to hold references to the trail elements
+
+    // create trail elements and add them to the document body
+    for (let i = 0; i < trailCount; i++) {
+        const trail = document.createElement('div'); // create a new div element for the trail
+        trail.classList.add('trail'); // add the 'trail' class for styling
+        document.body.appendChild(trail); // append the trail element to the body
+        trails.push(trail); // store the trail element in the trails array
+    }
+
+    let mouseX = 0; // current mouse x-coordinate
+    let mouseY = 0; // current mouse y-coordinate
+
+    // listen for mouse move events on the window
+    window.addEventListener('mousemove', e => {
+        mouseX = e.clientX; // update mouseX with current mouse horizontal position
+        mouseY = e.clientY; // update mouseY with current mouse vertical position
+
+        // immediately move the main cursor element to the current mouse position
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+    });
+
+    // initialize an array to keep track of the last known positions for each trail element
+    // each element is an object with x and y coordinates, initially set to 0,0
+    let lastPositions = Array(trailCount).fill({x: 0, y: 0});
+
+    function animate() {
+        let x = mouseX; // start x position for animation is the current mouse x
+        let y = mouseY; // start y position for animation is the current mouse y
+
+        trails.forEach((trail, index) => {
+            const lastPos = lastPositions[index]; // get the last position for the current trail element
+
+            // calculate new position by moving partway from lastPos to the current target (x,y)
+            // the 0.3 factor controls the speed/smoothness of the movement (lower = slower)
+            lastPositions[index] = {
+                x: lastPos.x + (x - lastPos.x) * 0.3,
+                y: lastPos.y + (y - lastPos.y) * 0.3
+            };
+
+            // update the trail element's position on the page based on the new coordinates
+            trail.style.left = lastPositions[index].x + 'px';
+            trail.style.top = lastPositions[index].y + 'px';
+
+            // set the opacity of the trail element so the further it is in the sequence, the more transparent it is
+            // this creates a fading effect for the trail elements
+            trail.style.opacity = (trailCount - index) / trailCount;
+
+            // update x and y so the next trail element will move towards this trail's new position
+            x = lastPositions[index].x;
+            y = lastPositions[index].y;
+        });
+
+        // request the browser to call animate again on the next frame, creating a smooth loop
+        requestAnimationFrame(animate);
+    }
+
+    // start the animation loop
+    animate();
 
 });
