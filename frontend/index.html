@@ -176,8 +176,14 @@
                 <i class="fas fa-sort"></i>
                 <span>{{ selectedOption.label || 'Sort' }}</span>
                 <button type="button" ng-click="toggleOrder(); $event.stopPropagation();"
-                  class="ml-auto text-gray-400 hover:text-amber-400 transition-all">
+                  class="ml-1 text-gray-400 hover:text-amber-400 transition-all">
                   <i class="fas" ng-class="getOrderIcon()"></i>
+                </button> 
+
+                <!-- reset button -->
+                <button ng-click="resetFilters(); $event.stopPropagation();"
+                  class="ml-1 px-3 py-1.5 bg-gradient-to-r from-red-600 via-red-500 to-amber-500 text-white font-semibold text-sm rounded-lg shadow-md hover:from-red-500 hover:to-amber-400 transition-all duration-300 transform hover:scale-105 hover:shadow-amber-500/40">
+                  <i class="fas fa-rotate-left"></i>
                 </button>
                 
                 <i class="fas chevron" ng-class="{'fa-chevron-down': !showOptions, 'fa-chevron-up': showOptions}"></i>

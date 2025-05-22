@@ -114,6 +114,16 @@ app.controller('MainController', function($scope, $http, $window) {
     // sort order flag: true = ascending, false = descending
     $scope.ascending = true;
 
+    $scope.resetFilters = function() {
+    $scope.mediumFilter = 'Movie';
+    $scope.searchDirector = '';
+    $scope.searchTitle = '';
+    $scope.selectedOption = null;
+    $scope.sortBy = '';
+    $scope.ascending = true;
+    $scope.showOptions = false;
+};
+
     // update the actual sort string (field name, possibly with minus for descending)
     function updateSortBy() {
         if ($scope.selectedOption) {
