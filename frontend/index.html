@@ -225,10 +225,11 @@
 
         </header>
 
-        <!-- main cards section -->
-        <main class="container mx-auto px-4 py-6">
+        <main class="container mx-auto px-4 py-6 min-h-[70vh] flex flex-col">
 
-          <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div id="cards" 
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 flex-grow"
+              ng-if="(entries | filter:startsWithFilter | orderBy: sortBy:sortOrder() | filter:mediumTypeFilter | filter:directorFilter).length > 0">
             <!-- single card item -->
             <div
               class="card-item bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-amber-500/20 flex flex-col fade-animation"
@@ -287,6 +288,22 @@
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- no result text -->
+          <div
+            ng-if="(entries | filter:startsWithFilter | orderBy: sortBy:sortOrder() | filter:mediumTypeFilter | filter:directorFilter).length === 0"
+            class="flex flex-col items-center justify-center mt-16 text-amber-400 select-none flex-grow"
+            style="min-height: 63vh;">
+
+            <!-- sad emoji svg -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width: 56px; height: 56px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14v.01M9 10h.01M15 10h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 16a3 3 0 00-6 0" />
+            </svg>
+
+            <h2 class="text-3xl font-extrabold mb-3 drop-shadow-lg">Oops!</h2>
+            <p class="text-lg max-w-md text-center drop-shadow-md">Unfortunately, we could not find anything for your search. Try another keyword or filter!</p>
           </div>
 
         </main>
