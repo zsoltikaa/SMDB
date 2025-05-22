@@ -235,6 +235,21 @@ footer {
     transition: all 0.4s ease;
 }
 
+/* input field animation for both searchTitle and searchDirector */
+input[ng-model="searchTitle"],
+input[ng-model="searchDirector"] {
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-color: #374151; 
+}
+
+/* input field box shadow on focus for both */
+input[ng-model="searchTitle"]:focus,
+input[ng-model="searchDirector"]:focus {
+  border-color: #f59e0b !important; 
+  box-shadow: 0 0 8px 3px rgba(245, 158, 11, 0.7);
+  outline: none;
+}
+
 /* ---------------------------------- */
 /* - animations and transitions     - */
 /* ---------------------------------- */
