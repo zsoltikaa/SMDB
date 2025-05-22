@@ -6,6 +6,10 @@ app.controller('MainController', function($scope, $http, $window) {
         // if the request is successful, store the returned data in the 'entries' array
         $scope.entries = response.data;
 
+        // calculate counts for movies and series
+        $scope.movieCount = $scope.entries.filter(x => x.medium === 'Movie').length;
+        $scope.seriesCount = $scope.entries.filter(x => x.medium === 'Series').length;
+
         $scope.calculateGenreStats = function () {
             // create an object to store genre counts
             const genreCounts = {};
