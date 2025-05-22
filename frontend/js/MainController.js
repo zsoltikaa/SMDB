@@ -67,7 +67,7 @@ app.controller('MainController', function($scope, $http, $window) {
     // scroll event
     angular.element($window).on('scroll', function() {
         $scope.$applyAsync(() => {
-        if ($window.scrollY > $window.innerHeight / 0.089) {
+        if ($window.scrollY > 7500) {
             $scope.scrollBtnVisible = true;
         } else {
             $scope.scrollBtnVisible = false;

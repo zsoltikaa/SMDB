@@ -3,13 +3,17 @@
 /* import custom google font */
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
+/* ---------------------------------- */
+/* - global resets and basics       - */
+/* ---------------------------------- */
+
 /* disable text selection and touch callout across all browsers */
 * {
     -webkit-touch-callout: none; /* safari */
     -webkit-user-select: none;   /* chrome/safari/opera */
     -khtml-user-select: none;    /* konqueror */
     -moz-user-select: none;      /* firefox */
-    -ms-user-select: none;       /* internet explorer/edge */
+    -ms-user-select: none;       /* ie/edge */
     user-select: none;           /* standard */
 }
 
@@ -18,29 +22,15 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ---------------------------------- */
+/* - layout and containers          - */
+/* ---------------------------------- */
+
 /* default body layout setup: vertical column, full height */
 body {
     display: flex;
     flex-direction: column;
     height: 100%;
-}
-
-/* apply custom font and spacing to h1 elements */
-h1 {
-    font-family: "Share Tech Mono", monospace;
-    font-weight: 400;
-    font-style: normal;
-    letter-spacing: 1.5px;
-}
-
-/* make buttons show pointer cursor on hover */
-button:hover {
-    cursor: pointer;
-}
-
-/* allow flex item to grow and fill available space */
-.flex-grow {
-    flex-grow: 1;
 }
 
 /* sticky top genres section with high z-index */
@@ -65,28 +55,92 @@ button:hover {
     object-fit: cover;
 }
 
+/* main content background with diagonal dark-to-orange gradients */
+main {
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
+                linear-gradient(240deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.7));
+}
+
+/* allow flex item to grow and fill available space */
+.flex-grow {
+    flex-grow: 1;
+}
+
+/* ---------------------------------- */
+/* - typography                     - */
+/* ---------------------------------- */
+
+/* apply custom font and spacing to h1 elements */
+h1 {
+    font-family: "Share Tech Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1.5px;
+}
+
+/* -------------------------------------- */
+/* - interactions, hover, focus, cursor - */
+/* -------------------------------------- */
+
+/* make buttons show pointer cursor on hover */
+button:hover {
+    cursor: pointer;
+}
+
+/* sort header hover effect */
+.sort-header:hover {
+    background: linear-gradient(to right, #333333, #3d3d3d);
+    border-color: #d97706;
+}
+
+/* sort header focus effect */
+.sort-header:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.5);
+}
+
+/* sort option hover effect */
+.sort-option:hover {
+    background: #333333;
+    color: #d97706;
+}
+
+/* scroll to top button hover effect */
+#scrollToTopBtn:hover {
+    background: linear-gradient(135deg, #d97706, #78350f);
+    box-shadow:
+      0 6px 10px rgba(217, 119, 6, 0.8),
+      0 0 25px rgba(217, 119, 6, 1);
+    transform: translateY(-5px);
+}
+
+/* scroll to top button active state */
+#scrollToTopBtn:active {
+    transform: translateY(0);
+    box-shadow:
+      0 3px 6px rgba(217, 119, 6, 0.6);
+}
+
+/* ---------------------------------- */
+/* - components styles              - */
+/* ---------------------------------- */
+
 /* gradient background for aside, header, footer and each .bg-gray-900 inside #cards */
 aside, header, footer, #cards .bg-gray-900 {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), 
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
                 linear-gradient(90deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
 /* gradient background for header with diagonal orange accent */
 header {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), 
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
                 linear-gradient(45deg, rgba(188, 94, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
 /* gradient background for footer matching the aside styling */
 footer {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), 
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
                 linear-gradient(90deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.5));
-}
-
-/* main content background with diagonal dark-to-orange gradients */
-main {
-    background: linear-gradient(120deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)), 
-                linear-gradient(240deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.7));
 }
 
 /* custom dropdown container */
@@ -107,18 +161,6 @@ main {
     color: #f5f5f5;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-/* sort header hover effect */
-.sort-header:hover {
-    background: linear-gradient(to right, #333333, #3d3d3d);
-    border-color: #d97706;
-}
-
-/* sort header focus effect */
-.sort-header:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.5);
 }
 
 /* icon inside the sort header */
@@ -167,12 +209,6 @@ main {
     align-items: center;
 }
 
-/* sort option hover effect */
-.sort-option:hover {
-    background: #333333;
-    color: #d97706;
-}
-
 /* active sort option */
 .sort-option.active {
     background: linear-gradient(to right, rgba(217, 119, 6, 0.2), transparent);
@@ -194,73 +230,81 @@ main {
     opacity: 1;
 }
 
+/* card hover animation enhancement */
+.card-item {
+    transition: all 0.4s ease;
+}
+
+/* ---------------------------------- */
+/* - animations and transitions     - */
+/* ---------------------------------- */
+
 /* fade animations for content changes */
-.fade-animation.ng-enter, 
+.fade-animation.ng-enter,
 .fade-animation.ng-leave,
 .fade-animation.ng-move {
-  transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
 }
 
 .fade-animation.ng-enter,
 .fade-animation.ng-leave.ng-leave-active,
 .fade-animation.ng-move {
-  opacity: 0;
+    opacity: 0;
 }
 
 .fade-animation.ng-enter.ng-enter-active,
 .fade-animation.ng-leave,
 .fade-animation.ng-move.ng-move-active {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* fade for medium type changes */
 .medium-fade {
-  transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .medium-fade.ng-hide {
-  opacity: 0;
+    opacity: 0;
 }
 
 /* genre stats fade animation */
 .genre-stats-item {
-  transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .genre-stats-item.ng-enter {
-  opacity: 0;
-  transform: translateY(10px);
+    opacity: 0;
+    transform: translateY(10px);
 }
 
 .genre-stats-item.ng-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* card hover animation enhancement */
-.card-item {
-  transition: all 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* global page transitions */
 .page-transition {
-  animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 /* keyframes for fade in animation */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-  }
-  
-  /* keyframes for fade out animation */
-  @keyframes fadeOut {
+}
+
+/* keyframes for fade out animation */
+@keyframes fadeOut {
     from { opacity: 1; }
     to { opacity: 0; }
-  }
-  
-  /* scroll to top button styling */
-  #scrollToTopBtn {
+}
+
+/* ---------------------------------- */
+/* - special elements               - */
+/* ---------------------------------- */
+
+/* scroll to top button styling */
+#scrollToTopBtn {
     position: fixed;
     bottom: 24px;
     right: 24px;
@@ -272,8 +316,8 @@ main {
     border: none;
     cursor: pointer;
     box-shadow:
-      0 4px 6px rgba(245, 158, 11, 0.6),
-      0 0 15px rgba(245, 158, 11, 0.8);
+        0 4px 6px rgba(245, 158, 11, 0.6),
+         0 0 15px rgba(245, 158, 11, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -283,39 +327,23 @@ main {
     opacity: 0;
     pointer-events: none;
     transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.1s linear;
-  }
-  
-  /* fade in animation class for scroll to top button */
-  #scrollToTopBtn.fade-in {
+}
+
+/* fade in animation class for scroll to top button */
+#scrollToTopBtn.fade-in {
     animation: fadeIn 0.5s forwards;
     pointer-events: auto;
     display: flex;
-  }
-  
-  /* fade out animation class for scroll to top button */
-  #scrollToTopBtn.fade-out {
+}
+
+/* fade out animation class for scroll to top button */
+#scrollToTopBtn.fade-out {
     animation: fadeOut 0.5s forwards;
     pointer-events: none;
-  }
-  
-  /* hover effect styling for scroll to top button */
-  #scrollToTopBtn:hover {
-    background: linear-gradient(135deg, #d97706, #78350f);
-    box-shadow:
-      0 6px 10px rgba(217, 119, 6, 0.8),
-      0 0 25px rgba(217, 119, 6, 1);
-    transform: translateY(-5px);
-  }
-  
-  /* active state styling for scroll to top button */
-  #scrollToTopBtn:active {
-    transform: translateY(0);
-    box-shadow:
-      0 3px 6px rgba(217, 119, 6, 0.6);
-  }
-  
-  /* icon inside scroll to top button styling */
-  #scrollToTopBtn i {
+}
+
+/* icon inside scroll to top button styling */
+#scrollToTopBtn i {
     text-shadow: 0 0 5px rgba(24, 24, 24, 0.7);
     color: black;
-  }  
+}
