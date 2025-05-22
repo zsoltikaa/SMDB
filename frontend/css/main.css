@@ -92,7 +92,7 @@ main {
 /* custom dropdown container */
 .custom-sort-dropdown {
     position: relative;
-    width: 20%;
+    width: 30%;
     user-select: none;
 }
 
