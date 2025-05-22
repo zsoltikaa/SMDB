@@ -1,4 +1,3 @@
-// define an angularjs module named 'SMDB' and attach a controller called 'SortController'
 angular.module('SMDB').controller('SortController', function($scope) {
 
     // a boolean flag that determines whether the dropdown options are visible
