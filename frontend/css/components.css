@@ -1,0 +1,100 @@
+/* custom dropdown container */
+.custom-sort-dropdown {
+    position: relative;
+    width: 25%;
+    user-select: none;
+}
+
+/* sort header container */
+.sort-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: linear-gradient(to right, #262626, #313131);
+    border: 1px solid #525252;
+    border-radius: 12px;
+    color: #f5f5f5;
+    cursor: none;
+    transition: all 0.3s ease;
+}
+
+/* icon inside the sort header */
+.sort-header i {
+    margin-right: 8px;
+    color: #d97706;
+}
+
+/* chevron icon inside sort header */
+.sort-header .chevron {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+/* options container */
+.sort-options {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: #262626;
+    border: 1px solid #525252;
+    border-radius: 12px;
+    z-index: 10;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* show options when active */
+.sort-options.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+/* individual sort option */
+.sort-option {
+    padding: 10px 16px;
+    cursor: none;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* active sort option */
+.sort-option.active {
+    background: linear-gradient(to right, rgba(217, 119, 6, 0.2), transparent);
+    color: #d97706;
+    font-weight: 500;
+}
+
+/* icon inside sort option */
+.sort-option i {
+    margin-right: 10px;
+    font-size: 0.9em;
+    opacity: 0;
+    width: 16px;
+    text-align: center;
+}
+
+/* active sort option icon */
+.sort-option.active i {
+    opacity: 1;
+}
+
+/* card hover animation enhancement */
+.card-item {
+    transition: all 0.4s ease;
+}
+
+.card-item:hover {
+    box-shadow: 0 1px 24px rgba(255, 179, 0, 0.5);
+}
+
+.card-item:hover img {
+    filter: brightness(80%);
+    transition: 0.5s ease-in-out;
+}

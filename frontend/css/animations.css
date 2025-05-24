@@ -1,0 +1,59 @@
+/* fade animations for content changes */
+.fade-animation.ng-enter,
+.fade-animation.ng-leave,
+.fade-animation.ng-move {
+    transition: opacity 0.5s ease;
+}
+
+.fade-animation.ng-enter,
+.fade-animation.ng-leave.ng-leave-active,
+.fade-animation.ng-move {
+    opacity: 0;
+}
+
+.fade-animation.ng-enter.ng-enter-active,
+.fade-animation.ng-leave,
+.fade-animation.ng-move.ng-move-active {
+    opacity: 1;
+}
+
+/* fade for medium type changes */
+.medium-fade {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.medium-fade.ng-hide {
+    opacity: 0;
+}
+
+/* genre stats fade animation */
+.genre-stats-item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.genre-stats-item.ng-enter {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.genre-stats-item.ng-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* global page transitions */
+.page-transition {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* keyframes for fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* keyframes for fade out animation */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

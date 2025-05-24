@@ -1,0 +1,14 @@
+aside, header, footer, #cards .bg-gray-900 {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
+                linear-gradient(90deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+header {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
+                linear-gradient(45deg, rgba(188, 94, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+footer {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
+                linear-gradient(90deg, rgba(255, 128, 0, 0.5), rgba(0, 0, 0, 0.5));
+}

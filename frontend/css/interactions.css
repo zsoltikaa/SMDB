@@ -1,0 +1,42 @@
+button:hover {
+    cursor: none;
+}
+
+.sort-header:hover {
+    background: linear-gradient(to right, #333333, #3d3d3d);
+    border-color: #d97706;
+}
+
+.sort-header:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.5);
+}
+
+.sort-option:hover {
+    background: #333333;
+    color: #d97706;
+}
+
+#scrollToTopBtn:hover {
+    background: linear-gradient(135deg, #d97706, #78350f);
+    box-shadow: 0 6px 10px rgba(217, 119, 6, 0.8), 0 0 25px rgba(217, 119, 6, 1);
+    transform: translateY(-5px);
+}
+
+#scrollToTopBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(217, 119, 6, 0.6);
+}
+
+input[ng-model="searchTitle"],
+input[ng-model="searchDirector"] {
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-color: #374151;
+}
+
+input[ng-model="searchTitle"]:focus,
+input[ng-model="searchDirector"]:focus {
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 8px 3px rgba(245, 158, 11, 0.7);
+    outline: none;
+}
