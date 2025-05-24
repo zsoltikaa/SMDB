@@ -98,3 +98,11 @@
     filter: brightness(80%);
     transition: 0.5s ease-in-out;
 }
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
