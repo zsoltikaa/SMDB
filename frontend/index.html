@@ -336,16 +336,40 @@
 
                 <img src="assets/img/{{ x.img }}" alt="{{ x.title }}" class="w-full h-64 object-cover">
 
+                <!-- category badge -->
+                <div
+                  class="absolute top-3 left-3 inline-flex items-center rounded-full px-2 py-1 text-xs font-bold text-amber-400 shadow-md backdrop-blur-sm"
+                  style="background-color: rgba(0, 0, 0, 0.5); text-shadow: 0 0 6px rgba(255, 165, 0, 0.6);"
+                  >
+
+                    <i
+                      class="mr-1"
+                      ng-class="{
+                        'fas fa-film': x.category === 'Movie',
+                        'fas fa-tv': x.category === 'Series'
+                      }"
+                      aria-hidden="true"
+                    ></i>
+
+                    <span>{{ x.medium }}</span>
+
+                </div>
+
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+
                   <h2 class="text-xl font-bold text-white">{{ x.title }}</h2>
                   <p class="text-amber-400">{{ x.release_date }}</p>
+
                 </div>
 
                 <!-- imdb rating badge -->
                 <div
                   class="absolute top-3 right-3 bg-black/60 text-amber-400 font-bold px-2 py-1 rounded-full flex items-center">
+
                   <i class="fas fa-star text-amber-400 mr-1"></i>
+
                   {{ x.imdb_rating }}
+                  
                 </div>
 
               </div>
