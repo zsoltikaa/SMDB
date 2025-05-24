@@ -11,13 +11,17 @@ app.controller('FilterController', function($scope) {
         return item.medium === $scope.mediumFilter;
     };
 
-    // filter function for director name (case-insensitive substring match)
-    $scope.directorFilter = function(item) {
-        // if no director search is entered, do not filter out anything
-        if (!$scope.searchDirector) return true;
+    // filter function for director search
+   $scope.directorFilter = function(item) {
+        if (!$scope.searchDirector || $scope.searchDirector.trim() === '') {
+            return true;  // no search input, show all items
+        }
 
-        // compare lowercase versions for case-insensitive matching
-        return item.director.toLowerCase().includes($scope.searchDirector.toLowerCase());
+        const director = (item.director || '').toLowerCase();  // get director name in lowercase
+        const search = $scope.searchDirector.toLowerCase();    // get search input in lowercase
+
+        // check if director's name starts with the search string
+        return director.indexOf(search) === 0;
     };
 
     // filter function for title search (checks if title starts with the entered text)
