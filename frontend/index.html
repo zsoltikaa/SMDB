@@ -42,10 +42,24 @@
   <script src="js/SortController.js"></script>
   <script src="js/UIController.js"></script>
   <script src="js/MainController.js"></script>
+  <script src="js/FavoritesController.js"></script>
 
 </head>
 
-  <body class="bg-black text-gray-100 min-h-screen page-transition">
+    <body class="bg-black text-gray-100 min-h-screen page-transition" ng-controller="FavoritesController">
+
+    <!-- Kedvenc üzenet -->
+    <div class="fixed top-4 right-4 px-4 py-3 rounded-lg font-semibold text-white z-50 transition-all duration-300 transform"
+        ng-show="favoriteMessage.show"
+        ng-class="{
+          'bg-green-600': favoriteMessage.type === 'success',
+          'bg-blue-600': favoriteMessage.type === 'info',
+          'translate-x-0': favoriteMessage.show,
+          'translate-x-full': !favoriteMessage.show
+        }">
+      <i class="fas fa-heart mr-2"></i>
+      {{ favoriteMessage.text }}
+    </div>
 
     <div class="custom-cursor"></div>
 
@@ -86,7 +100,7 @@
 
           <!-- series button -->
           <span
-            class="cursor-pointer w-full text-center text-lg px-4 py-2 rounded-lg font-medium font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl flex items-center justify-center mb-4"
+            class="cursor-pointer w-full text-center text-lg px-4 py-2 rounded-lg font-medium font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl flex items-center justify-center mb-0"
             ng-click="mediumFilter = 'Series'"
             ng-class="{
               'bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-black shadow-lg shadow-amber-500/30 border border-amber-300': mediumFilter === 'Series',
@@ -95,6 +109,19 @@
           >
             <i class="fas fa-tv mr-2"></i>
             {{ seriesCount }} Series
+          </span>
+
+          <!-- favorites button -->
+          <span
+            class="cursor-pointer w-full text-center text-lg px-4 py-2 rounded-lg font-medium font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl flex items-center justify-center mb-4"
+            ng-click="showOnlyFavorites = !showOnlyFavorites"
+            ng-class="{
+              'bg-gradient-to-r from-red-500 via-red-400 to-red-600 text-white shadow-lg shadow-red-500/30 border border-red-300': showOnlyFavorites,
+              'bg-gradient-to-r from-gray-800 to-gray-700 text-gray-300 hover:from-gray-700 hover:to-gray-600 hover:text-white border border-gray-600': !showOnlyFavorites
+            }"
+          >
+            <i class="fas fa-heart mr-2"></i>
+            {{ getFavoritesCount() }} Favorites
           </span>
 
         </div>
@@ -153,32 +180,6 @@
               </div>
 
             </div>
-
-          </div>
-
-        </div>
-
-        <!-- useful links -->
-        <div class="hidden md:block">
-
-          <h3 class="text-xs uppercase tracking-wider text-gray-500 mb-4 text-left ml-4">Useful Links</h3>
-
-          <div class="flex flex-wrap gap-2 justify-center">
-
-            <a href="https://www.omdbapi.com/" target="_blank"
-              class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300 hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700">
-              OMDb
-            </a>
-
-            <a href="https://www.imdb.com/" target="_blank"
-              class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300 hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700">
-              IMDb
-            </a>
-
-            <a href="https://www.rottentomatoes.com/" target="_blank"
-              class="bg-gradient-to-r from-gray-700 to-gray-800 text-xs px-2 py-1 rounded-full text-gray-300 hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700">
-              Rotten Tomatoes
-            </a>
 
           </div>
 
@@ -324,36 +325,27 @@
 
           <div id="cards" 
               class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 flex-grow"
-              ng-if="(entries | filter:startsWithFilter | orderBy: sortBy:sortOrder() | filter:mediumTypeFilter | filter:directorFilter).length > 0">
+              ng-if="(entries | filter:startsWithFilter | orderBy: sortBy:sortOrder() | filter:mediumTypeFilter | filter:directorFilter | filter:favoritesFilter).length > 0">
 
             <!-- single card item -->
             <div
               class="card-item bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-amber-500/20 flex flex-col fade-animation"
-              ng-repeat="x in entries | filter:startsWithFilter | orderBy: sortBy:sortOrder() | filter:mediumTypeFilter | filter:directorFilter">
+              ng-repeat="x in entries | filter:startsWithFilter | orderBy: sortBy:sortOrder() | filter:mediumTypeFilter | filter:directorFilter | filter:favoritesFilter">
 
               <!-- movie image -->
               <div class="relative">
 
                 <img src="assets/img/{{ x.img }}" alt="{{ x.title }}" class="w-full h-64 object-cover">
 
-                <!-- category badge -->
-                <div
-                  class="absolute top-3 left-3 inline-flex items-center rounded-full px-2 py-1 text-xs font-bold text-amber-400 shadow-md backdrop-blur-sm"
-                  style="background-color: rgba(0, 0, 0, 0.5); text-shadow: 0 0 6px rgba(255, 165, 0, 0.6);"
-                  >
-
-                    <i
-                      class="mr-1"
-                      ng-class="{
-                        'fas fa-film': x.category === 'Movie',
-                        'fas fa-tv': x.category === 'Series'
-                      }"
-                      aria-hidden="true"
-                    ></i>
-
-                    <span>{{ x.medium }}</span>
-
-                </div>
+                <!-- favorite badge -->
+                <button
+                  class="favorite-button"
+                  ng-click="toggleFavorite(x); $event.stopPropagation();"
+                  title="{{ isFavorite(x) ? 'Remove from favorites' : 'Add to favorites' }}"
+                  ng-class="{'animate-pulse': isFavorite(x)}"
+                >
+                  <i class="fas fa-heart"></i>
+                </button>
 
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
 
@@ -431,7 +423,7 @@
 
           <!-- no result text -->
           <div
-            ng-if="(entries | filter:startsWithFilter | orderBy: sortBy:sortOrder() | filter:mediumTypeFilter | filter:directorFilter).length === 0"
+            ng-if="(entries | filter:startsWithFilter | orderBy: sortBy:sortOrder() | filter:mediumTypeFilter | filter:directorFilter | filter:favoritesFilter).length === 0"
             class="flex flex-col items-center justify-center mt-16 text-amber-400 select-none flex-grow"
             style="min-height: 63vh;">
 
