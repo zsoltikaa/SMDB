@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // select all elements on the page that have the class "seat" and store them in a variable called 'seats'
     const seats = document.querySelectorAll(".seat");
+
+    if (seats.length === 0) return;
   
     // initialize a variable to keep track of the current seat index (not actively used here)
     let currentSeat = 0;
