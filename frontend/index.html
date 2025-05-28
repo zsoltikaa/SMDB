@@ -48,19 +48,6 @@
 
     <body class="bg-black text-gray-100 min-h-screen page-transition" ng-controller="FavoritesController">
 
-    <!-- Kedvenc üzenet -->
-    <div class="fixed top-4 right-4 px-4 py-3 rounded-lg font-semibold text-white z-50 transition-all duration-300 transform"
-        ng-show="favoriteMessage.show"
-        ng-class="{
-          'bg-green-600': favoriteMessage.type === 'success',
-          'bg-blue-600': favoriteMessage.type === 'info',
-          'translate-x-0': favoriteMessage.show,
-          'translate-x-full': !favoriteMessage.show
-        }">
-      <i class="fas fa-heart mr-2"></i>
-      {{ favoriteMessage.text }}
-    </div>
-
     <div class="custom-cursor"></div>
 
     <iframe id="preloader-frame" src="preloader.html"
