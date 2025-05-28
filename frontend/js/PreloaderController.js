@@ -1,4 +1,4 @@
-// wait until the entire html document has been completely loaded and parsed
+// PreloaderController - handles preloader
 document.addEventListener("DOMContentLoaded", function () {
 
     // select all elements on the page that have the class "seat" and store them in a variable called 'seats'
